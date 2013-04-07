@@ -34,7 +34,7 @@ function printDone {
 mcp=$mcpDir
 srcBase="$mcp/src_base"
 src="$mcp/src"
-srcCore="core/src"
+srcCore="$coreDir/src"
 srcMod="src"
 op=`pwd`
 

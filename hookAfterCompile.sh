@@ -12,3 +12,10 @@ function copy {
 copy "bin_data/*"
 copy "$forgeDir/common/forge_at.cfg"
 copy "$forgeDir/fml/common/*.{cfg,info,properties}"
+
+coreDummyName="monnefCore_dummy.jar"
+coreModsDir="$mcpDir/jars/coremods"
+if [ ! -f "$coreModsDir/$coreDummyName" ]; then
+    echo "Not found dummy core file, copying"
+    cp "$coreDir/$coreDummyName" "$coreModsDir"
+fi

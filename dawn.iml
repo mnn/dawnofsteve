@@ -10,7 +10,9 @@
     <content url="file://$MODULE_DIR$/core/src">
       <sourceFolder url="file://$MODULE_DIR$/core/src" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/src" />
+    <content url="file://$MODULE_DIR$/src">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="mcp_lib" level="project" />

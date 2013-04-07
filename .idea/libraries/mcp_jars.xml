@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="mcp_jars">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/mcp/jars/bin/jinput.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/mcp/jars/bin/lwjgl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/mcp/jars/bin/lwjgl_util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/mcp/jars/minecraft_server.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/mcp/jars/bin/minecraft.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

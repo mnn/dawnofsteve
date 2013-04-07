@@ -1,0 +1,8 @@
+#!/bin/bash
+# Python wrapper
+oldDir=`pwd`
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+$DIR/../build/mcp/runtime/bin/python/python_mcp $@
+ret=$?
+exit $?

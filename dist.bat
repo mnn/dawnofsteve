@@ -1,0 +1,2 @@
+bash dist.sh
+pause

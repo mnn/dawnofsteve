@@ -30,7 +30,8 @@ function printDone {
 #main
 
 #code preparation
-mcp="build/mcp"
+. ./initVars.sh
+mcp=$mcpDir
 srcBase="$mcp/src_base"
 src="$mcp/src"
 srcCore="core/src"
@@ -77,3 +78,4 @@ for t in "${Work[@]}"; do
 done
 
 echo "Success!"
+cd "$op"

@@ -1,5 +1,6 @@
 package monnef.dawn.item;
 
+import monnef.core.MonnefCorePlugin;
 import monnef.dawn.DawnOfSteve;
 
 public class ItemBlunderbuss extends ItemGun {
@@ -7,6 +8,6 @@ public class ItemBlunderbuss extends ItemGun {
         super(id);
         setUnlocalizedName(DawnOfSteve.BLUNDERBUSS);
         setFull3D();
-        initGun(AmmoRequirement.BULLETS_SMALL, 1, 20, 5);
+        initGun(AmmoRequirement.BULLETS_SMALL, MonnefCorePlugin.debugEnv ? 20 : 1, 20, 5);
     }
 }

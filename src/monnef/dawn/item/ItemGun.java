@@ -2,6 +2,7 @@ package monnef.dawn.item;
 
 import monnef.core.utils.PlayerHelper;
 import monnef.dawn.DawnOfSteve;
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -59,7 +60,9 @@ public class ItemGun extends ItemDawn {
                     if (res != null) {
                         if (res.typeOfHit == EnumMovingObjectType.ENTITY) {
                             res.entityHit.attackEntityFrom(DamageSource.causePlayerDamage(player), damagePerBullet);
-                        } // TODO block hit
+                        } else {
+                            world.setBlock(res.blockX, res.blockY, res.blockZ, Block.cloth.blockID);
+                        }
                     }
                 }
                 ammo--;

@@ -1,2 +1,0 @@
-bash rebuild.sh
-pause

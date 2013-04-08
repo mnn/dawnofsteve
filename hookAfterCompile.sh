@@ -17,5 +17,5 @@ coreDummyName="monnefCore_dummy.jar"
 coreModsDir="$mcpDir/jars/coremods"
 if [ ! -f "$coreModsDir/$coreDummyName" ]; then
     echo "Not found dummy core file, copying"
-    cp "$coreDir/$coreDummyName" "$coreModsDir"
+    cp "$coreDir/$coreDummyName" "$coreModsDir" || crash "cannot copy dummy core file"
 fi

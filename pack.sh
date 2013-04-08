@@ -30,8 +30,10 @@ version=`parseVersion`
 echo "Version detected: [$version]"
 
 printAction "Copying mod files..."
+monnefDir="$outtmp/monnef"
+emptyDir "$monnefDir"
 cp -r $binPath/* "$outtmp" || crash "Cannot copy bin_data directory."
-cp -r $mcpDir/reobf/minecraft/monnef/dawn "$outtmp" || crash "Cannot copy obfuscated classes."
+cp -r $mcpDir/reobf/minecraft/monnef/dawn "$monnefDir" || crash "Cannot copy obfuscated classes."
 
 printAction "Packing mod to jar"
 outNameMod="Dawn_of_Steve_$version"

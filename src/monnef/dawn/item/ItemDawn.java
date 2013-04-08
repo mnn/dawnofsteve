@@ -1,7 +1,11 @@
+/*
+ * Copyright (c) 2013 monnef.
+ */
+
 package monnef.dawn.item;
 
 import monnef.dawn.DawnOfSteve;
-import monnef.dawn.Reference;
+import monnef.dawn.common.Reference;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 

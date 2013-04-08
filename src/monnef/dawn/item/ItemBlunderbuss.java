@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013 monnef.
+ */
+
 package monnef.dawn.item;
 
 import monnef.core.MonnefCorePlugin;

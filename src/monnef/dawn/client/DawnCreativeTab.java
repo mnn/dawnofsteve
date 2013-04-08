@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013 monnef.
+ */
+
 package monnef.dawn.client;
 
 import monnef.dawn.DawnOfSteve;

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013 monnef.
+ */
+
 package monnef.dawn;
 
 import cpw.mods.fml.common.FMLLog;
@@ -10,8 +14,13 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import monnef.core.utils.CustomLogger;
 import monnef.core.utils.IDProvider;
 import monnef.dawn.client.DawnCreativeTab;
+import monnef.dawn.client.PlayerHooksClient;
 import monnef.dawn.common.CommonProxy;
+import monnef.dawn.network.DawnPacketHandler;
+import monnef.dawn.common.PlayerWorldHandlers;
+import monnef.dawn.common.Reference;
 import monnef.dawn.item.ItemBlunderbuss;
+import monnef.dawn.server.PlayerHooksServer;
 import net.minecraft.src.PlayerAPI;
 import net.minecraft.src.ServerPlayerAPI;
 import net.minecraftforge.common.Configuration;
@@ -19,12 +28,13 @@ import net.minecraftforge.common.MinecraftForge;
 
 import java.util.logging.Level;
 
-import static monnef.dawn.Reference.ModId;
-import static monnef.dawn.Reference.ModName;
-import static monnef.dawn.Reference.Version;
+import static monnef.dawn.common.Reference.CHANNEL;
+import static monnef.dawn.common.Reference.ModId;
+import static monnef.dawn.common.Reference.ModName;
+import static monnef.dawn.common.Reference.Version;
 
 @Mod(modid = ModId, name = ModName, version = Version, dependencies = "required-after:" + monnef.core.Reference.ModId)
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"jaffas-01-sstone"}, packetHandler = PacketHandler.class)
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = CHANNEL, packetHandler = DawnPacketHandler.class)
 public class DawnOfSteve {
     public static final String BLUNDERBUSS = "blunderbuss";
 
@@ -65,6 +75,7 @@ public class DawnOfSteve {
         PlayerAPI.register(ModId, PlayerHooksClient.class);
         ServerPlayerAPI.register(ModId, PlayerHooksServer.class);
         MinecraftForge.EVENT_BUS.register(new PlayerWorldHandlers());
+        proxy.onLoad();
 
         printInitializedMessage();
     }

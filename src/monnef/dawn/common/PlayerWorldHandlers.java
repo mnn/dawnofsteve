@@ -1,4 +1,8 @@
-package monnef.dawn;
+/*
+ * Copyright (c) 2013 monnef.
+ */
+
+package monnef.dawn.common;
 
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.item.ItemTossEvent;

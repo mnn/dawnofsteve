@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2013 monnef.
+ */
+
 package monnef.dawn.item;
 
 import monnef.core.utils.PlayerHelper;
@@ -14,7 +18,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ItemGun extends ItemDawn {
+public class ItemGun extends ItemDawn implements IItemGun {
     private static final String AMMO_LEFT_TAG = "ammoLeft";
     private static final String COOLDOWN_TAG = "cooldown";
 
@@ -91,7 +95,8 @@ public class ItemGun extends ItemDawn {
         list.add(info);
     }
 
-    private void initNBT(ItemStack stack) {
+    @Override
+    public void initNBT(ItemStack stack) {
         if (!stack.hasTagCompound()) {
             stack.setTagCompound(new NBTTagCompound());
             setAmmoLeft(stack, clipSize);
@@ -99,26 +104,46 @@ public class ItemGun extends ItemDawn {
         }
     }
 
-    private int getAmmoLeft(ItemStack stack) {
+    @Override
+    public int getAmmoLeft(ItemStack stack) {
         return stack.getTagCompound().getInteger(AMMO_LEFT_TAG);
     }
 
-    private void setAmmoLeft(ItemStack stack, int count) {
+    @Override
+    public void setAmmoLeft(ItemStack stack, int count) {
         stack.getTagCompound().setInteger(AMMO_LEFT_TAG, count);
         int dmgToShow = clipSize * itemDmgCoef - count * itemDmgCoef;
         if (dmgToShow <= 0) dmgToShow = 1;
         stack.setItemDamage(dmgToShow);
     }
 
-    private int getCoolDown(ItemStack stack) {
+    @Override
+    public int getCoolDown(ItemStack stack) {
         return stack.getTagCompound().getInteger(COOLDOWN_TAG);
     }
 
-    private void setCoolDown(ItemStack stack, int count) {
+    @Override
+    public void setCoolDown(ItemStack stack, int count) {
         stack.getTagCompound().setInteger(COOLDOWN_TAG, count);
     }
 
-    private boolean coolDownActive(ItemStack stack) {
+    @Override
+    public boolean coolDownActive(ItemStack stack) {
         return getCoolDown(stack) > 0;
+    }
+
+    @Override
+    public AmmoRequirement getRequiresAmmo() {
+        return requiresAmmo;
+    }
+
+    @Override
+    public int getClipSize() {
+        return clipSize;
+    }
+
+    @Override
+    public float getMaxDistance() {
+        return maxDistance;
     }
 }

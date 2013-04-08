@@ -1,4 +1,8 @@
-package monnef.dawn;
+/*
+ * Copyright (c) 2013 monnef.
+ */
+
+package monnef.dawn.server;
 
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.src.ServerPlayerAPI;
@@ -35,4 +39,6 @@ public class PlayerHooksServer extends ServerPlayerBase {
 
         super.beforeOnUpdate();
     }
+
+
 }

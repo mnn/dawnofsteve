@@ -68,7 +68,7 @@
     <file path="/NetworkHelper.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365448125604" ignored="false" />
     <file path="/KeyHandler.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365451137261" ignored="false" />
     <file path="/ModelHat.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365520013137" ignored="false" />
-    <file path="/PlayerRendering.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365537028033" ignored="false" />
+    <file path="/PlayerRendering.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365538985279" ignored="false" />
     <file path="/ItemArmorDawn.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365532820507" ignored="false" />
     <file path="/IDawnArmor.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365531117824" ignored="false" />
     <file path="/ArmorModelEnum.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365531156370" ignored="false" />
@@ -146,10 +146,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DawnOfSteve.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DawnOfSteve.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="73" selection-start="3022" selection-end="3022" vertical-scroll-proportion="0.6315789">
+            <state line="76" column="73" selection-start="3022" selection-end="3022" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -166,10 +166,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerRendering.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PlayerRendering.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/PlayerRendering.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="63" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
+            <state line="40" column="66" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.40350878">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -239,8 +239,8 @@
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/ClientProxy.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemArmorDawn.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/common/CommonProxy.java" />
-        <option value="$PROJECT_DIR$/src/monnef/dawn/client/PlayerRendering.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/client/PlayerRendering.java" />
       </list>
     </option>
   </component>
@@ -848,15 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/PlayerRendering.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="63" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/ClientProxy.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="32" column="0" selection-start="823" selection-end="823" vertical-scroll-proportion="0.0">
@@ -868,8 +859,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="73" selection-start="3022" selection-end="3022" vertical-scroll-proportion="0.6315789">
+        <state line="76" column="73" selection-start="3022" selection-end="3022" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/PlayerRendering.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="66" selection-start="1416" selection-end="1416" vertical-scroll-proportion="0.40350878">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

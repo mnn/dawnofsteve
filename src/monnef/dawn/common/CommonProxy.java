@@ -11,6 +11,17 @@ public class CommonProxy {
         return FMLCommonHandler.instance().getEffectiveSide().isServer();
     }
 
+    public boolean isClient() {
+        return !isServer();
+    }
+
     public void onLoad() {
+    }
+
+    public void onPreLoad() {
+    }
+
+    public int addArmor(String name) {
+        return 0;
     }
 }

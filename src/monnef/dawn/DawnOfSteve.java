@@ -21,6 +21,7 @@ import monnef.dawn.common.Reference;
 import monnef.dawn.item.ArmorModelEnum;
 import monnef.dawn.item.ItemArmorDawn;
 import monnef.dawn.item.ItemBlunderbuss;
+import monnef.dawn.item.ItemSabre;
 import monnef.dawn.network.DawnPacketHandler;
 import monnef.dawn.server.PlayerHooksServer;
 import net.minecraft.src.ServerPlayerAPI;
@@ -41,6 +42,8 @@ import static monnef.dawn.item.ItemArmorDawn.EnumArmorMaterialDawn01;
 public class DawnOfSteve {
     public static final String BLUNDERBUSS = "blunderbuss";
     public static final String ARMOR1_CHEST = "armor1Chest";
+    public static final String HATBLACK = "hatBlack";
+    public static final String SABRE = "sabre";
 
     @Mod.Instance(ModId)
     public static DawnOfSteve instance;
@@ -54,7 +57,7 @@ public class DawnOfSteve {
     public static ItemBlunderbuss blunderbuss;
     public static ItemArmorDawn hatBlack;
     public static ItemArmorDawn armor1Chest;
-    private static final String HATBLACK = "hatBlack";
+    public static ItemSabre sabre;
 
     private int renderIndexArmor01;
 
@@ -71,19 +74,29 @@ public class DawnOfSteve {
             config.load();
             provider.linkWithConfig(config);
 
-            blunderbuss = new ItemBlunderbuss(provider.getItemIDFromConfig(BLUNDERBUSS));
-            LanguageRegistry.addName(blunderbuss, "Blunderbuss");
+            createItems(provider);
 
-            renderIndexArmor01 = proxy.addArmor("armor01");
-            hatBlack = new ItemArmorDawn(provider.getItemIDFromConfig(HATBLACK), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.helm, "/armor_blank.png", ArmorModelEnum.HAT);
-            RegistryUtils.registerItem(hatBlack, HATBLACK, "Black Hat");
-            armor1Chest = new ItemArmorDawn(provider.getItemIDFromConfig(ARMOR1_CHEST), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.chest, "/armor01a.png", ArmorModelEnum.NONE);
-            RegistryUtils.registerItem(armor1Chest, ARMOR1_CHEST, ARMOR1_CHEST);
         } catch (Exception e) {
             FMLLog.log(Level.SEVERE, e, "Mod \"" + Reference.ModName + "\" can't read config file.");
         } finally {
             config.save();
         }
+    }
+
+    private void createItems(IDProvider provider) {
+        blunderbuss = new ItemBlunderbuss(provider.getItemIDFromConfig(BLUNDERBUSS));
+        LanguageRegistry.addName(blunderbuss, "Blunderbuss");
+
+        renderIndexArmor01 = proxy.addArmor("armor01");
+
+        hatBlack = new ItemArmorDawn(provider.getItemIDFromConfig(HATBLACK), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.helm, "/armor_blank.png", ArmorModelEnum.HAT);
+        RegistryUtils.registerItem(hatBlack, HATBLACK, "Black Hat");
+
+        armor1Chest = new ItemArmorDawn(provider.getItemIDFromConfig(ARMOR1_CHEST), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.chest, "/armor01a.png", ArmorModelEnum.NONE);
+        RegistryUtils.registerItem(armor1Chest, ARMOR1_CHEST, ARMOR1_CHEST);
+
+        sabre = new ItemSabre(provider.getItemIDFromConfig(SABRE), ItemSabre.enumToolMaterialSabre);
+        RegistryUtils.registerItem(sabre, SABRE, "Sabre");
     }
 
     @Mod.Init

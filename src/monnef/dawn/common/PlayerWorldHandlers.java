@@ -4,6 +4,7 @@
 
 package monnef.dawn.common;
 
+import net.minecraft.block.Block;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
@@ -22,6 +23,10 @@ public class PlayerWorldHandlers {
 
     @ForgeSubscribe
     public void onBreakSpeed(PlayerEvent.BreakSpeed evt) {
-        evt.setCanceled(true);
+        if (evt.block.blockID == Block.cloth.blockID) {
+
+        } else {
+            evt.setCanceled(true);
+        }
     }
 }

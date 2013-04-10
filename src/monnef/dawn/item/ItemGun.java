@@ -37,6 +37,7 @@ public class ItemGun extends ItemDawn implements IItemGun {
     public ItemGun(int id) {
         super(id);
         setMaxStackSize(1);
+        setFull3D();
     }
 
     public void initGun(AmmoRequirement ammo, int clipSize, float maxDistance, int damagePerBullet) {

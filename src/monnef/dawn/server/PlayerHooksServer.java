@@ -5,6 +5,8 @@
 package monnef.dawn.server;
 
 import cpw.mods.fml.relauncher.ReflectionHelper;
+import monnef.dawn.item.ItemGun;
+import net.minecraft.item.ItemStack;
 import net.minecraft.src.ServerPlayerAPI;
 import net.minecraft.src.ServerPlayerBase;
 import net.minecraft.util.FoodStats;
@@ -39,6 +41,4 @@ public class PlayerHooksServer extends ServerPlayerBase {
 
         super.beforeOnUpdate();
     }
-
-
 }

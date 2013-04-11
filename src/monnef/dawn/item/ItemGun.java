@@ -4,6 +4,8 @@
 
 package monnef.dawn.item;
 
+import monnef.core.MonnefCorePlugin;
+import monnef.core.utils.RandomHelper;
 import monnef.dawn.DawnOfSteve;
 import monnef.dawn.network.NetworkHelper;
 import monnef.dawn.network.packet.SpawnParticlePacket;
@@ -20,12 +22,12 @@ import net.minecraft.world.World;
 import java.util.List;
 
 import static monnef.core.utils.PlayerHelper.EntityHitResult;
-import static monnef.core.utils.PlayerHelper.addVector;
-import static monnef.core.utils.PlayerHelper.getEntityPositionVector;
 import static monnef.core.utils.PlayerHelper.getPlayersHeadPositionVector;
-import static monnef.core.utils.PlayerHelper.multiplyVector;
 import static monnef.core.utils.PlayerHelper.rayTraceBlock;
 import static monnef.core.utils.PlayerHelper.rayTraceEntity;
+import static monnef.core.utils.VectorUtils.addVector;
+import static monnef.core.utils.VectorUtils.getEntityPositionVector;
+import static monnef.core.utils.VectorUtils.multiplyVector;
 import static monnef.dawn.network.packet.SpawnParticlePacket.SpawnType;
 
 public class ItemGun extends ItemDawn implements IItemGun {
@@ -44,6 +46,11 @@ public class ItemGun extends ItemDawn implements IItemGun {
     protected int cdAfterFire = 20;
     protected int cdAfterNoAmmo = 10;
     private final static int itemDmgCoef = 100;
+    private float kickVerticalMinAfterFire = 6;
+    private float kickHorizontalMinAfterFire = -1;
+    private float kickVerticalMaxAfterFire = 10;
+    private float kickHorizontalMaxAfterFire = 1;
+    private float radiusOfInaccuracy = 0.05f;
 
     public ItemGun(int id) {
         super(id);
@@ -51,12 +58,23 @@ public class ItemGun extends ItemDawn implements IItemGun {
         setFull3D();
     }
 
-    public void initGun(AmmoRequirement ammo, int clipSize, float maxDistance, int damagePerBullet) {
+    public void initBasic(AmmoRequirement ammo, int clipSize, float maxDistance, int damagePerBullet) {
         requiresAmmo = ammo;
         this.clipSize = clipSize;
         setMaxDamage(clipSize * itemDmgCoef);
         this.maxDistance = maxDistance;
         this.damagePerBullet = damagePerBullet;
+    }
+
+    public void initKickAfter(float kickVerticalMinAfterFire, float kickHorizontalMinAfterFire, float kickVerticalMaxAfterFire, float kickHorizontalMaxAfterFire) {
+        this.kickVerticalMinAfterFire = kickVerticalMinAfterFire;
+        this.kickHorizontalMinAfterFire = kickHorizontalMinAfterFire;
+        this.kickVerticalMaxAfterFire = kickVerticalMaxAfterFire;
+        this.kickHorizontalMaxAfterFire = kickHorizontalMaxAfterFire;
+    }
+
+    public void initAccuracy(float radiusOfInaccuracy) {
+        this.radiusOfInaccuracy = radiusOfInaccuracy;
     }
 
     enum HitTypeEnum {
@@ -75,8 +93,12 @@ public class ItemGun extends ItemDawn implements IItemGun {
             } else {
                 player.addChatMessage((DawnOfSteve.proxy.isServer() ? "S" : "C") + " firing! " + stack.getItemDamage());
                 if (DawnOfSteve.proxy.isServer()) {
-                    MovingObjectPosition blockHit = rayTraceBlock(player, maxDistance);
-                    EntityHitResult entityHit = rayTraceEntity(player, maxDistance);
+                    Vec3 look = player.getLookVec();
+                    //look.rotateAroundX(RandomHelper.generateRandomFromInterval(-radiusOfInaccuracy, radiusOfInaccuracy));
+                    //look.rotateAroundZ(RandomHelper.generateRandomFromInterval(-radiusOfInaccuracy, radiusOfInaccuracy));
+
+                    MovingObjectPosition blockHit = rayTraceBlock(player, maxDistance, look);
+                    EntityHitResult entityHit = rayTraceEntity(player, maxDistance, look);
                     HitTypeEnum hitType = HitTypeEnum.AIR;
                     if (blockHit != null) hitType = HitTypeEnum.TILE;
                     if (entityHit != null) {
@@ -98,7 +120,11 @@ public class ItemGun extends ItemDawn implements IItemGun {
                             break;
 
                         case TILE:
-                            player.worldObj.setBlock(blockHit.blockX, blockHit.blockY, blockHit.blockZ, Block.glowStone.blockID);
+                            if (MonnefCorePlugin.debugEnv) {
+                                int bId = player.worldObj.getBlockId(blockHit.blockX, blockHit.blockY, blockHit.blockZ);
+                                int newBlockId = bId == Block.grass.blockID ? Block.sand.blockID : Block.grass.blockID;
+                                player.worldObj.setBlock(blockHit.blockX, blockHit.blockY, blockHit.blockZ, newBlockId);
+                            }
                             smokePos = blockHit.hitVec;
                             break;
 
@@ -118,6 +144,9 @@ public class ItemGun extends ItemDawn implements IItemGun {
 
                     Vec3 gunSmoke = addVector(getPlayersHeadPositionVector(player), multiplyVector(player.worldObj.getWorldVec3Pool(), player.getLookVec().normalize(), 1));
                     NetworkHelper.sendToAllAround(player, SMOKE_EFFECT_VISIBILITY, new SpawnParticlePacket(SpawnType.GUNPOWDER_SMOKE, player.dimension, gunSmoke).makePacket());
+                } else { // is client
+                    player.rotationPitch -= RandomHelper.generateRandomFromInterval(kickVerticalMinAfterFire, kickVerticalMaxAfterFire);
+                    player.rotationYaw -= RandomHelper.generateRandomFromInterval(kickHorizontalMinAfterFire, kickHorizontalMaxAfterFire);
                 }
                 ammo--;
                 setAmmoLeft(stack, ammo);
@@ -134,7 +163,11 @@ public class ItemGun extends ItemDawn implements IItemGun {
 
         initNBT(stack);
         if (coolDownActive(stack)) {
-            setCoolDown(stack, getCoolDown(stack) - 1);
+            int count = getCoolDown(stack) - 1;
+            setCoolDown(stack, count);
+            if (MonnefCorePlugin.debugEnv && count == 0) {
+                ((EntityPlayer) entity).addChatMessage(DawnOfSteve.proxy.getSideString() + " count==0");
+            }
         }
     }
 

@@ -5,7 +5,7 @@
 package monnef.dawn.client;
 
 import monnef.dawn.item.ArmorModelEnum;
-import monnef.dawn.item.IDawnArmor;
+import monnef.dawn.item.ISpecialArmorModel;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.RenderPlayerAPI;
@@ -35,7 +35,7 @@ public class PlayerRendering extends RenderPlayerBase {
         super.renderPlayer(var1, x, y, z, var8, var9);
 
         ItemStack headStack = var1.inventory.armorItemInSlot(3);
-        if (headStack != null && headStack.getItem() instanceof IDawnArmor && ((IDawnArmor) headStack.getItem()).getArmorModel() == ArmorModelEnum.HAT) {
+        if (headStack != null && headStack.getItem() instanceof ISpecialArmorModel && ((ISpecialArmorModel) headStack.getItem()).getArmorModel() == ArmorModelEnum.HAT) {
             float f2 = interpolateRotation(var1.prevRenderYawOffset, var1.renderYawOffset, U);
             float f3 = interpolateRotation(var1.prevRotationYawHead, var1.rotationYawHead, U);
 

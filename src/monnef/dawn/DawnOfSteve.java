@@ -11,9 +11,12 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 import monnef.core.utils.CustomLogger;
 import monnef.core.utils.IDProvider;
 import monnef.core.utils.RegistryUtils;
+import monnef.dawn.client.ClientTicker;
 import monnef.dawn.client.DawnCreativeTab;
 import monnef.dawn.common.CommonProxy;
 import monnef.dawn.common.PlayerWorldHandlers;
@@ -41,7 +44,9 @@ import static monnef.dawn.item.ItemArmorDawn.EnumArmorMaterialDawn01;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = CHANNEL, packetHandler = DawnPacketHandler.class)
 public class DawnOfSteve {
     public static final String BLUNDERBUSS = "blunderbuss";
-    public static final String ARMOR1_CHEST = "armor1Chest";
+    public static final String BLUE_CHEST = "blueChest";
+    public static final String BLUE_LEGS = "blueLegs";
+    public static final String BLUE_BOOTS = "blueBoots";
     public static final String HATBLACK = "hatBlack";
     public static final String SABRE = "sabre";
 
@@ -56,7 +61,9 @@ public class DawnOfSteve {
 
     public static ItemBlunderbuss blunderbuss;
     public static ItemArmorDawn hatBlack;
-    public static ItemArmorDawn armor1Chest;
+    public static ItemArmorDawn blueChest;
+    public static ItemArmorDawn blueBoots;
+    public static ItemArmorDawn blueLegs;
     public static ItemSabre sabre;
 
     private int renderIndexArmor01;
@@ -87,13 +94,17 @@ public class DawnOfSteve {
         blunderbuss = new ItemBlunderbuss(provider.getItemIDFromConfig(BLUNDERBUSS));
         LanguageRegistry.addName(blunderbuss, "Blunderbuss");
 
-        renderIndexArmor01 = proxy.addArmor("armor01");
+        renderIndexArmor01 = proxy.addArmor("armorBlue");
 
         hatBlack = new ItemArmorDawn(provider.getItemIDFromConfig(HATBLACK), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.helm, "/armor_blank.png", ArmorModelEnum.HAT);
         RegistryUtils.registerItem(hatBlack, HATBLACK, "Black Hat");
 
-        armor1Chest = new ItemArmorDawn(provider.getItemIDFromConfig(ARMOR1_CHEST), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.chest, "/armor01a.png", ArmorModelEnum.NONE);
-        RegistryUtils.registerItem(armor1Chest, ARMOR1_CHEST, ARMOR1_CHEST);
+        blueChest = new ItemArmorDawn(provider.getItemIDFromConfig(BLUE_CHEST), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.chest, "/armor01a.png", ArmorModelEnum.NONE);
+        RegistryUtils.registerItem(blueChest, BLUE_CHEST, BLUE_CHEST);
+        blueBoots = new ItemArmorDawn(provider.getItemIDFromConfig(BLUE_BOOTS), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.boots, "/armor01a.png", ArmorModelEnum.NONE);
+        RegistryUtils.registerItem(blueBoots, BLUE_BOOTS, BLUE_BOOTS);
+        blueLegs = new ItemArmorDawn(provider.getItemIDFromConfig(BLUE_LEGS), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.leggings, "/armor01b.png", ArmorModelEnum.NONE);
+        RegistryUtils.registerItem(blueLegs, BLUE_LEGS, BLUE_LEGS);
 
         sabre = new ItemSabre(provider.getItemIDFromConfig(SABRE), ItemSabre.enumToolMaterialSabre);
         RegistryUtils.registerItem(sabre, SABRE, "Sabre");
@@ -105,6 +116,8 @@ public class DawnOfSteve {
 
         MinecraftForge.EVENT_BUS.register(new PlayerWorldHandlers());
         proxy.onLoad();
+
+        TickRegistry.registerTickHandler(new ClientTicker(), Side.CLIENT);
 
         printInitializedMessage();
     }

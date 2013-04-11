@@ -4,6 +4,6 @@
 
 package monnef.dawn.item;
 
-public interface IDawnArmor {
+public interface ISpecialArmorModel {
     ArmorModelEnum getArmorModel();
 }

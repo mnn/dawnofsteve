@@ -5,6 +5,7 @@
 package monnef.dawn.common;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import monnef.dawn.network.packet.SpawnParticlePacket;
 
 public class CommonProxy {
     public boolean isServer() {
@@ -15,6 +16,10 @@ public class CommonProxy {
         return !isServer();
     }
 
+    public String getSideString() {
+        return isServer() ? "S" : "C";
+    }
+
     public void onLoad() {
     }
 
@@ -23,5 +28,9 @@ public class CommonProxy {
 
     public int addArmor(String name) {
         return 0;
+    }
+
+    public void spawnParticle(SpawnParticlePacket packet) {
+
     }
 }

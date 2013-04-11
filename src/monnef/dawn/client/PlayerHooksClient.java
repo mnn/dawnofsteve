@@ -63,11 +63,12 @@ public class PlayerHooksClient extends PlayerBase {
     public void swingItem() {
         if (swingCd <= 0) {
             ItemStack stack = player.getCurrentEquippedItem();
-            if (stack == null) return;
-            Item item = stack.getItem();
-            if (item instanceof IHitWithCoolDown) {
-                swingCd = ((IHitWithCoolDown) item).getHitCoolDown();
-                setClickCounter(swingCd);
+            if (stack != null) {
+                Item item = stack.getItem();
+                if (item instanceof IHitWithCoolDown) {
+                    swingCd = ((IHitWithCoolDown) item).getHitCoolDown();
+                    setClickCounter(swingCd);
+                }
             }
             super.swingItem();
         } else {

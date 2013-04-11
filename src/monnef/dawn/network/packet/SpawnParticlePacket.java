@@ -7,13 +7,10 @@ package monnef.dawn.network.packet;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.relauncher.Side;
+import monnef.dawn.DawnOfSteve;
 import monnef.dawn.network.DawnPacket;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityFX;
-import net.minecraft.client.particle.EntitySmokeFX;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Vec3;
-import net.minecraftforge.common.DimensionManager;
 
 import java.net.ProtocolException;
 
@@ -28,6 +25,26 @@ public class SpawnParticlePacket extends DawnPacket {
     private double x;
     private double y;
     private double z;
+
+    public SpawnType getType() {
+        return type;
+    }
+
+    public int getDim() {
+        return dim;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public double getZ() {
+        return z;
+    }
 
     public SpawnParticlePacket() {
     }
@@ -72,14 +89,7 @@ public class SpawnParticlePacket extends DawnPacket {
             throw new ProtocolException();
         }
 
-        EntityFX toSpawn = null;
-        if (type == SpawnType.BULLET_SMOKE) {
-            toSpawn = new EntitySmokeFX(DimensionManager.getWorld(dim), x, y, z, 0, 0, 0, 1.5f);
-        } else if (type == SpawnType.GUNPOWDER_SMOKE) {
-            toSpawn = new EntitySmokeFX(DimensionManager.getWorld(dim), x, y, z, 0, 0.001, 0, 2f);
-        }
-
-        if (toSpawn != null)
-            Minecraft.getMinecraft().effectRenderer.addEffect(toSpawn);
+        //ClientTicker.spawnQueue.offer(this);
+        DawnOfSteve.proxy.spawnParticle(this);
     }
 }

@@ -4,7 +4,6 @@
 
 package monnef.dawn.item;
 
-import monnef.core.utils.PlayerHelper;
 import monnef.dawn.DawnOfSteve;
 import monnef.dawn.network.NetworkHelper;
 import monnef.dawn.network.packet.SpawnParticlePacket;
@@ -20,9 +19,19 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
+import static monnef.core.utils.PlayerHelper.EntityHitResult;
+import static monnef.core.utils.PlayerHelper.addVector;
+import static monnef.core.utils.PlayerHelper.getEntityPositionVector;
+import static monnef.core.utils.PlayerHelper.getPlayersHeadPositionVector;
+import static monnef.core.utils.PlayerHelper.multiplyVector;
+import static monnef.core.utils.PlayerHelper.rayTraceBlock;
+import static monnef.core.utils.PlayerHelper.rayTraceEntity;
+import static monnef.dawn.network.packet.SpawnParticlePacket.SpawnType;
+
 public class ItemGun extends ItemDawn implements IItemGun {
     private static final String AMMO_LEFT_TAG = "ammoLeft";
     private static final String COOLDOWN_TAG = "cooldown";
+    public static final int SMOKE_EFFECT_VISIBILITY = 50;
 
     enum AmmoRequirement {
         NONE, BULLETS_SMALL
@@ -65,16 +74,15 @@ public class ItemGun extends ItemDawn implements IItemGun {
                 setCoolDown(stack, cdAfterNoAmmo);
             } else {
                 player.addChatMessage((DawnOfSteve.proxy.isServer() ? "S" : "C") + " firing! " + stack.getItemDamage());
-                // TODO fire
                 if (DawnOfSteve.proxy.isServer()) {
-                    MovingObjectPosition blockHit = PlayerHelper.rayTraceBlock(player, maxDistance);
-                    PlayerHelper.EntityHitResult entityHit = PlayerHelper.rayTraceEntity(player, maxDistance);
+                    MovingObjectPosition blockHit = rayTraceBlock(player, maxDistance);
+                    EntityHitResult entityHit = rayTraceEntity(player, maxDistance);
                     HitTypeEnum hitType = HitTypeEnum.AIR;
                     if (blockHit != null) hitType = HitTypeEnum.TILE;
                     if (entityHit != null) {
                         if (hitType == HitTypeEnum.AIR) hitType = HitTypeEnum.ENTITY;
                         else {
-                            Vec3 playerPosition = PlayerHelper.getEntityPositionVector(player);
+                            Vec3 playerPosition = getEntityPositionVector(player);
                             double blockDist = blockHit.hitVec.distanceTo(playerPosition);
                             double entDist = entityHit.hitVector.distanceTo(playerPosition);
                             if (blockDist < entDist) hitType = HitTypeEnum.TILE;
@@ -95,14 +103,21 @@ public class ItemGun extends ItemDawn implements IItemGun {
                             break;
 
                         case AIR:
-                            Vec3 shift = PlayerHelper.calculatePlayerLookMultiplied(player, maxDistance);
-                            smokePos = PlayerHelper.getPlayersHeadPositionVector(player).addVector(shift.xCoord, shift.yCoord, shift.zCoord);
+                            //Vec3 shift = PlayerHelper.calculatePlayerLookMultiplied(player, maxDistance);
+                            //smokePos = PlayerHelper.getPlayersHeadPositionVector(player).addVector(shift.xCoord, shift.yCoord, shift.zCoord);
                             break;
 
                         default:
                             throw new RuntimeException("No hit?");
                     }
-                    NetworkHelper.sendToAllAround(player, 50, new SpawnParticlePacket(SpawnParticlePacket.SpawnType.BULLET_SMOKE, player.dimension, smokePos.xCoord, smokePos.yCoord, smokePos.zCoord).makePacket());
+
+                    if (smokePos != null) {
+                        smokePos = addVector(smokePos, multiplyVector(player.worldObj.getWorldVec3Pool(), player.getLookVec().normalize(), -0.1));
+                        NetworkHelper.sendToAllAround(player, SMOKE_EFFECT_VISIBILITY, new SpawnParticlePacket(SpawnType.BULLET_SMOKE, player.dimension, smokePos).makePacket());
+                    }
+
+                    Vec3 gunSmoke = addVector(getPlayersHeadPositionVector(player), multiplyVector(player.worldObj.getWorldVec3Pool(), player.getLookVec().normalize(), 1));
+                    NetworkHelper.sendToAllAround(player, SMOKE_EFFECT_VISIBILITY, new SpawnParticlePacket(SpawnType.GUNPOWDER_SMOKE, player.dimension, gunSmoke).makePacket());
                 }
                 ammo--;
                 setAmmoLeft(stack, ammo);

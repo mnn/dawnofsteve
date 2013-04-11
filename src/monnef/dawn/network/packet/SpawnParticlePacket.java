@@ -8,14 +8,19 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.relauncher.Side;
 import monnef.dawn.network.DawnPacket;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityFX;
+import net.minecraft.client.particle.EntitySmokeFX;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.Vec3;
 import net.minecraftforge.common.DimensionManager;
 
 import java.net.ProtocolException;
 
 public class SpawnParticlePacket extends DawnPacket {
     public enum SpawnType {
-        BULLET_SMOKE
+        BULLET_SMOKE,
+        GUNPOWDER_SMOKE
     }
 
     private SpawnType type;
@@ -33,6 +38,14 @@ public class SpawnParticlePacket extends DawnPacket {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+
+    public SpawnParticlePacket(SpawnType type, int dim, Vec3 vector) {
+        this.type = type;
+        this.dim = dim;
+        this.x = vector.xCoord;
+        this.y = vector.yCoord;
+        this.z = vector.zCoord;
     }
 
     @Override
@@ -58,7 +71,15 @@ public class SpawnParticlePacket extends DawnPacket {
         if (side.isServer()) {
             throw new ProtocolException();
         }
-        player.addChatMessage("particle spawn " + x + " " + y + " " + z);
-        DimensionManager.getWorld(dim).spawnParticle("smoke", x, y, z, 0.0D, 0.0D, 0.0D);
+
+        EntityFX toSpawn = null;
+        if (type == SpawnType.BULLET_SMOKE) {
+            toSpawn = new EntitySmokeFX(DimensionManager.getWorld(dim), x, y, z, 0, 0, 0, 1.5f);
+        } else if (type == SpawnType.GUNPOWDER_SMOKE) {
+            toSpawn = new EntitySmokeFX(DimensionManager.getWorld(dim), x, y, z, 0, 0.001, 0, 2f);
+        }
+
+        if (toSpawn != null)
+            Minecraft.getMinecraft().effectRenderer.addEffect(toSpawn);
     }
 }

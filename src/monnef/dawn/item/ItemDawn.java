@@ -17,11 +17,11 @@ public class ItemDawn extends Item {
 
     @Override
     public void updateIcons(IconRegister register) {
-        this.iconIndex = register.registerIcon(getIconName());
+        this.iconIndex = register.registerIcon(getIconName(this));
     }
 
-    private String getIconName() {
-        String id = getUnlocalizedName();
+    public static String getIconName(Item item) {
+        String id = item.getUnlocalizedName();
         id = id.substring(id.indexOf('.') + 1);
         return Reference.ModName + ":" + id;
     }

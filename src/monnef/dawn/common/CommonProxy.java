@@ -6,6 +6,7 @@ package monnef.dawn.common;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import monnef.dawn.network.packet.SpawnParticlePacket;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class CommonProxy {
     public boolean isServer() {
@@ -30,7 +31,7 @@ public class CommonProxy {
         return 0;
     }
 
-    public void spawnParticle(SpawnParticlePacket packet) {
+    public void spawnParticle(SpawnParticlePacket packet, EntityPlayer player) {
 
     }
 }

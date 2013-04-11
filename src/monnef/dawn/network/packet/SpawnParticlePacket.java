@@ -8,6 +8,7 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.relauncher.Side;
 import monnef.dawn.DawnOfSteve;
+import monnef.dawn.client.ClientTicker;
 import monnef.dawn.network.DawnPacket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Vec3;
@@ -89,7 +90,7 @@ public class SpawnParticlePacket extends DawnPacket {
             throw new ProtocolException();
         }
 
-        //ClientTicker.spawnQueue.offer(this);
-        DawnOfSteve.proxy.spawnParticle(this);
+        if (this.dim != player.dimension) return;
+        DawnOfSteve.proxy.spawnParticle(this, player);
     }
 }

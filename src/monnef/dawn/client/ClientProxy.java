@@ -11,10 +11,10 @@ import monnef.dawn.common.CommonProxy;
 import monnef.dawn.network.packet.SpawnParticlePacket;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.particle.EntitySmokeFX;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.src.PlayerAPI;
 import net.minecraft.src.RenderPlayerAPI;
-import net.minecraft.world.WorldServer;
-import net.minecraftforge.common.DimensionManager;
+import net.minecraft.world.World;
 
 import static monnef.dawn.common.Reference.ModId;
 
@@ -41,14 +41,13 @@ public class ClientProxy extends CommonProxy {
 
     private void spawnParticle(EntityFX entity) {
         if (entity != null) {
-            //Minecraft.getMinecraft().effectRenderer.addEffect(entity);
             FMLClientHandler.instance().getClient().effectRenderer.addEffect(entity);
         }
     }
 
     @Override
-    public void spawnParticle(SpawnParticlePacket packet) {
-        WorldServer world = DimensionManager.getWorld(packet.getDim());
+    public void spawnParticle(SpawnParticlePacket packet, EntityPlayer player) {
+        World world = player.worldObj;
 
         switch (packet.getType()) {
             case BULLET_SMOKE:

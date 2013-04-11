@@ -13,6 +13,7 @@ import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import monnef.dawn.common.Reference;
 import monnef.dawn.network.packet.ReloadPacket;
+import monnef.dawn.network.packet.SpawnParticlePacket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.packet.Packet;
 
@@ -26,6 +27,7 @@ public abstract class DawnPacket {
         ImmutableBiMap.Builder<Integer, Class<? extends DawnPacket>> builder = ImmutableBiMap.builder();
 
         builder.put(0, ReloadPacket.class);
+        builder.put(1, SpawnParticlePacket.class);
 
         idMap = builder.build();
     }
@@ -34,7 +36,7 @@ public abstract class DawnPacket {
 
     public abstract void read(ByteArrayDataInput in);
 
-    public abstract void execute(EntityPlayer player, Side side);
+    public abstract void execute(EntityPlayer player, Side side) throws ProtocolException;
 
     public static DawnPacket constructPacket(int packetId) throws ProtocolException, IllegalAccessException, InstantiationException {
         Class<? extends DawnPacket> clazz = idMap.get(Integer.valueOf(packetId));

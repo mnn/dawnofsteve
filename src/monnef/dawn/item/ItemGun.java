@@ -6,14 +6,16 @@ package monnef.dawn.item;
 
 import monnef.core.utils.PlayerHelper;
 import monnef.dawn.DawnOfSteve;
+import monnef.dawn.network.NetworkHelper;
+import monnef.dawn.network.packet.SpawnParticlePacket;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -48,6 +50,10 @@ public class ItemGun extends ItemDawn implements IItemGun {
         this.damagePerBullet = damagePerBullet;
     }
 
+    enum HitTypeEnum {
+        AIR, ENTITY, TILE
+    }
+
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
         initNBT(stack);
@@ -61,14 +67,42 @@ public class ItemGun extends ItemDawn implements IItemGun {
                 player.addChatMessage((DawnOfSteve.proxy.isServer() ? "S" : "C") + " firing! " + stack.getItemDamage());
                 // TODO fire
                 if (DawnOfSteve.proxy.isServer()) {
-                    MovingObjectPosition res = PlayerHelper.rayTrace(player, maxDistance);
-                    if (res != null) {
-                        if (res.typeOfHit == EnumMovingObjectType.ENTITY) {
-                            res.entityHit.attackEntityFrom(DamageSource.causePlayerDamage(player), damagePerBullet);
-                        } else {
-                            world.setBlock(res.blockX, res.blockY, res.blockZ, Block.cloth.blockID);
+                    MovingObjectPosition blockHit = PlayerHelper.rayTraceBlock(player, maxDistance);
+                    PlayerHelper.EntityHitResult entityHit = PlayerHelper.rayTraceEntity(player, maxDistance);
+                    HitTypeEnum hitType = HitTypeEnum.AIR;
+                    if (blockHit != null) hitType = HitTypeEnum.TILE;
+                    if (entityHit != null) {
+                        if (hitType == HitTypeEnum.AIR) hitType = HitTypeEnum.ENTITY;
+                        else {
+                            Vec3 playerPosition = PlayerHelper.getEntityPositionVector(player);
+                            double blockDist = blockHit.hitVec.distanceTo(playerPosition);
+                            double entDist = entityHit.hitVector.distanceTo(playerPosition);
+                            if (blockDist < entDist) hitType = HitTypeEnum.TILE;
+                            else hitType = HitTypeEnum.ENTITY;
                         }
                     }
+
+                    Vec3 smokePos = null;
+                    switch (hitType) {
+                        case ENTITY:
+                            entityHit.entity.attackEntityFrom(DamageSource.causePlayerDamage(player), damagePerBullet);
+                            smokePos = entityHit.hitVector;
+                            break;
+
+                        case TILE:
+                            player.worldObj.setBlock(blockHit.blockX, blockHit.blockY, blockHit.blockZ, Block.glowStone.blockID);
+                            smokePos = blockHit.hitVec;
+                            break;
+
+                        case AIR:
+                            Vec3 shift = PlayerHelper.calculatePlayerLookMultiplied(player, maxDistance);
+                            smokePos = PlayerHelper.getPlayersHeadPositionVector(player).addVector(shift.xCoord, shift.yCoord, shift.zCoord);
+                            break;
+
+                        default:
+                            throw new RuntimeException("No hit?");
+                    }
+                    NetworkHelper.sendToAllAround(player, 50, new SpawnParticlePacket(SpawnParticlePacket.SpawnType.BULLET_SMOKE, player.dimension, smokePos.xCoord, smokePos.yCoord, smokePos.zCoord).makePacket());
                 }
                 ammo--;
                 setAmmoLeft(stack, ammo);

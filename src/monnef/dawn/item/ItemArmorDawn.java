@@ -32,6 +32,7 @@ DIAMOND(33, new int[]{3, 8, 6, 3}, 10);
         super(id, material, renderIndex, armorType.ordinal());
         this.armorTexture = armorTexture;
         this.model = model;
+        setMaxDamage(0);
     }
 
     @Override

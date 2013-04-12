@@ -4,6 +4,7 @@
 
 package monnef.dawn.client;
 
+import monnef.dawn.client.model.ModelHat;
 import monnef.dawn.item.ArmorModelEnum;
 import monnef.dawn.item.ISpecialArmorModel;
 import net.minecraft.client.entity.EntityPlayerSP;

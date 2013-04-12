@@ -9,7 +9,6 @@ import monnef.core.utils.RandomHelper;
 import monnef.dawn.DawnOfSteve;
 import monnef.dawn.network.NetworkHelper;
 import monnef.dawn.network.packet.SpawnParticlePacket;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -124,19 +123,23 @@ public class ItemGun extends ItemDawn implements IItemGun, IHitWithCoolDown {
                     switch (hitType) {
                         case ENTITY:
                             int dmg = calculateBulletDamage(entityHit.distance);
+                            /*
                             if (MonnefCorePlugin.debugEnv) {
                                 player.addChatMessage("dmg calc: dist=" + entityHit.distance + " dmg=" + dmg);
                             }
+                            */
                             entityHit.entity.attackEntityFrom(DamageSource.causePlayerDamage(player), dmg);
                             smokePos = entityHit.hitVector;
                             break;
 
                         case TILE:
+                            /*
                             if (MonnefCorePlugin.debugEnv) {
                                 int bId = player.worldObj.getBlockId(blockHit.blockX, blockHit.blockY, blockHit.blockZ);
                                 int newBlockId = bId == Block.grass.blockID ? Block.sand.blockID : Block.grass.blockID;
                                 player.worldObj.setBlock(blockHit.blockX, blockHit.blockY, blockHit.blockZ, newBlockId);
                             }
+                            */
                             smokePos = blockHit.hitVec;
                             break;
 
@@ -155,10 +158,10 @@ public class ItemGun extends ItemDawn implements IItemGun, IHitWithCoolDown {
                     }
 
                     Vec3 gunSmoke = addVector(getPlayersHeadPositionVector(player), multiplyVector(player.worldObj.getWorldVec3Pool(), player.getLookVec().normalize(), 1));
-                    //NetworkHelper.sendToAllAround(player, SMOKE_EFFECT_VISIBILITY, new SpawnParticlePacket(SpawnType.GUNPOWDER_SMOKE, player.dimension, gunSmoke).makePacket());
+                    NetworkHelper.sendToAllAround(player, SMOKE_EFFECT_VISIBILITY, new SpawnParticlePacket(SpawnType.GUNPOWDER_SMOKE, player.dimension, gunSmoke).makePacket());
                 } else { // is client
-                    //player.rotationPitch -= RandomHelper.generateRandomFromInterval(kickVerticalMinAfterFire, kickVerticalMaxAfterFire);
-                    //player.rotationYaw -= RandomHelper.generateRandomFromInterval(kickHorizontalMinAfterFire, kickHorizontalMaxAfterFire);
+                    player.rotationPitch -= RandomHelper.generateRandomFromInterval(kickVerticalMinAfterFire, kickVerticalMaxAfterFire);
+                    player.rotationYaw -= RandomHelper.generateRandomFromInterval(kickHorizontalMinAfterFire, kickHorizontalMaxAfterFire);
                 }
                 ammo--;
                 setAmmoLeft(stack, ammo);

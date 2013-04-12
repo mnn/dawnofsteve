@@ -46,7 +46,7 @@ public class PlayerRendering extends RenderPlayerBase {
             GL11.glTranslatef(0, -22 * U, 0);
 
             if (var1.isSneaking()) {
-                GL11.glTranslatef(0, 1 * U, 0);
+                GL11.glTranslatef(0, 3 * U, 0);
             }
 
             GL11.glRotatef(f3, 0, 1, 0); // ok

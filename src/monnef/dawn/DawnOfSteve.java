@@ -24,6 +24,7 @@ import monnef.dawn.common.Reference;
 import monnef.dawn.item.ArmorModelEnum;
 import monnef.dawn.item.ItemArmorDawn;
 import monnef.dawn.item.ItemBlunderbuss;
+import monnef.dawn.item.ItemDawnSword;
 import monnef.dawn.item.ItemSabre;
 import monnef.dawn.network.DawnPacketHandler;
 import monnef.dawn.server.PlayerHooksServer;
@@ -49,6 +50,7 @@ public class DawnOfSteve {
     public static final String BLUE_BOOTS = "blueBoots";
     public static final String HATBLACK = "hatBlack";
     public static final String SABRE = "sabre";
+    public static final String KNIFE = "knife";
 
     @Mod.Instance(ModId)
     public static DawnOfSteve instance;
@@ -64,7 +66,8 @@ public class DawnOfSteve {
     public static ItemArmorDawn blueChest;
     public static ItemArmorDawn blueBoots;
     public static ItemArmorDawn blueLegs;
-    public static ItemSabre sabre;
+    public static ItemDawnSword sabre;
+    public static ItemDawnSword knife;
 
     private int renderIndexArmor01;
 
@@ -106,8 +109,10 @@ public class DawnOfSteve {
         blueLegs = new ItemArmorDawn(provider.getItemIDFromConfig(BLUE_LEGS), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.leggings, "/armor01b.png", ArmorModelEnum.NONE);
         RegistryUtils.registerItem(blueLegs, BLUE_LEGS, BLUE_LEGS);
 
-        sabre = new ItemSabre(provider.getItemIDFromConfig(SABRE), ItemSabre.enumToolMaterialSabre);
+        sabre = new ItemDawnSword(provider.getItemIDFromConfig(SABRE), ItemDawnSword.enumToolMaterialSabre);
         RegistryUtils.registerItem(sabre, SABRE, "Sabre");
+        knife = new ItemDawnSword(provider.getItemIDFromConfig(KNIFE), ItemDawnSword.enumToolMaterialSabre);
+        RegistryUtils.registerItem(knife, KNIFE, "Warknife");
     }
 
     @Mod.Init

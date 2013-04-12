@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.IArmorTextureProvider;
 
-public class ItemArmorDawn extends ItemArmor implements IDawnArmor, IArmorTextureProvider {
+public class ItemArmorDawn extends ItemArmor implements ISpecialArmorModel, IArmorTextureProvider {
         /*
 CLOTH(5, new int[]{1, 3, 2, 1}, 15),
 CHAIN(15, new int[]{2, 5, 4, 1}, 12),

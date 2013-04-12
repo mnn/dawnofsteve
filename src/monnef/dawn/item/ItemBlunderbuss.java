@@ -11,6 +11,6 @@ public class ItemBlunderbuss extends ItemGun {
     public ItemBlunderbuss(int id) {
         super(id);
         setUnlocalizedName(DawnOfSteve.BLUNDERBUSS);
-        initGun(AmmoRequirement.BULLETS_SMALL, MonnefCorePlugin.debugEnv ? 20 : 1, 20, 5);
+        initBasic(AmmoRequirement.BULLETS_SMALL, MonnefCorePlugin.debugEnv ? 20 : 1, 20, 5);
     }
 }

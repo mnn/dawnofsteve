@@ -5,6 +5,7 @@
 package monnef.dawn.client;
 
 import cpw.mods.fml.relauncher.ReflectionHelper;
+import monnef.dawn.DawnOfSteve;
 import monnef.dawn.common.PlayerInfo;
 import monnef.dawn.item.IHitWithCoolDown;
 import monnef.dawn.network.NetworkHelper;
@@ -53,6 +54,7 @@ public class PlayerHooksClient extends PlayerBase {
         if (swingCd > 0) swingCd--;
     }
 
+
     public void tryReload() {
         if (info.isGunEquipped() && info.gotAmmo() && info.haveSpaceInGun()) {
             NetworkHelper.sendToServer(ReloadPacket.ReloadType.CS_WANT_RELOAD);
@@ -63,11 +65,12 @@ public class PlayerHooksClient extends PlayerBase {
     public void swingItem() {
         if (swingCd <= 0) {
             ItemStack stack = player.getCurrentEquippedItem();
-            if (stack == null) return;
-            Item item = stack.getItem();
-            if (item instanceof IHitWithCoolDown) {
-                swingCd = ((IHitWithCoolDown) item).getHitCoolDown();
-                setClickCounter(swingCd);
+            if (stack != null) {
+                Item item = stack.getItem();
+                if (item instanceof IHitWithCoolDown) {
+                    swingCd = ((IHitWithCoolDown) item).getHitCoolDown();
+                    setClickCounter(swingCd);
+                }
             }
             super.swingItem();
         } else {

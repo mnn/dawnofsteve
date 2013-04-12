@@ -4,6 +4,7 @@
 
 package monnef.dawn.item;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemSword;
 import net.minecraftforge.common.EnumHelper;
@@ -24,5 +25,10 @@ public class ItemSabre extends ItemSword implements IHitWithCoolDown {
     @Override
     public int getHitCoolDown() {
         return 40;
+    }
+
+    @Override
+    public void updateIcons(IconRegister register) {
+        this.iconIndex = register.registerIcon(ItemDawn.getIconName(this));
     }
 }

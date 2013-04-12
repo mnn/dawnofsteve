@@ -30,18 +30,19 @@ import static monnef.core.utils.VectorUtils.getEntityPositionVector;
 import static monnef.core.utils.VectorUtils.multiplyVector;
 import static monnef.dawn.network.packet.SpawnParticlePacket.SpawnType;
 
-public class ItemGun extends ItemDawn implements IItemGun {
+public class ItemGun extends ItemDawn implements IItemGun, IHitWithCoolDown {
     private static final String AMMO_LEFT_TAG = "ammoLeft";
     private static final String COOLDOWN_TAG = "cooldown";
     public static final int SMOKE_EFFECT_VISIBILITY = 50;
 
-    enum AmmoRequirement {
+    public enum AmmoRequirement {
         NONE, BULLETS_SMALL
     }
 
     private AmmoRequirement requiresAmmo;
     private int clipSize;
-    private float maxDistance;
+    private float maximalEffectiveDistance;
+    private float fadeOutDamageDistance = 10;
     private int damagePerBullet;
     protected int cdAfterFire = 20;
     protected int cdAfterNoAmmo = 10;
@@ -58,12 +59,18 @@ public class ItemGun extends ItemDawn implements IItemGun {
         setFull3D();
     }
 
-    public void initBasic(AmmoRequirement ammo, int clipSize, float maxDistance, int damagePerBullet) {
+    @Override
+    public int getHitCoolDown() {
+        return hitCollDown;
+    }
+
+    public ItemGun initBasic(AmmoRequirement ammo, int clipSize, float maxDistance, int damagePerBullet) {
         requiresAmmo = ammo;
         this.clipSize = clipSize;
         setMaxDamage(clipSize * itemDmgCoef);
-        this.maxDistance = maxDistance;
+        this.maximalEffectiveDistance = maxDistance;
         this.damagePerBullet = damagePerBullet;
+        return this;
     }
 
     public void initKickAfter(float kickVerticalMinAfterFire, float kickHorizontalMinAfterFire, float kickVerticalMaxAfterFire, float kickHorizontalMaxAfterFire) {
@@ -97,8 +104,9 @@ public class ItemGun extends ItemDawn implements IItemGun {
                     //look.rotateAroundX(RandomHelper.generateRandomFromInterval(-radiusOfInaccuracy, radiusOfInaccuracy));
                     //look.rotateAroundZ(RandomHelper.generateRandomFromInterval(-radiusOfInaccuracy, radiusOfInaccuracy));
 
-                    MovingObjectPosition blockHit = rayTraceBlock(player, maxDistance, look);
-                    EntityHitResult entityHit = rayTraceEntity(player, maxDistance, look);
+                    float maximalCollisionDistance = maximalEffectiveDistance + fadeOutDamageDistance;
+                    MovingObjectPosition blockHit = rayTraceBlock(player, maximalCollisionDistance, look);
+                    EntityHitResult entityHit = rayTraceEntity(player, maximalCollisionDistance, look);
                     HitTypeEnum hitType = HitTypeEnum.AIR;
                     if (blockHit != null) hitType = HitTypeEnum.TILE;
                     if (entityHit != null) {
@@ -115,7 +123,11 @@ public class ItemGun extends ItemDawn implements IItemGun {
                     Vec3 smokePos = null;
                     switch (hitType) {
                         case ENTITY:
-                            entityHit.entity.attackEntityFrom(DamageSource.causePlayerDamage(player), damagePerBullet);
+                            int dmg = calculateBulletDamage(entityHit.distance);
+                            if (MonnefCorePlugin.debugEnv) {
+                                player.addChatMessage("dmg calc: dist=" + entityHit.distance + " dmg=" + dmg);
+                            }
+                            entityHit.entity.attackEntityFrom(DamageSource.causePlayerDamage(player), dmg);
                             smokePos = entityHit.hitVector;
                             break;
 
@@ -129,7 +141,7 @@ public class ItemGun extends ItemDawn implements IItemGun {
                             break;
 
                         case AIR:
-                            //Vec3 shift = PlayerHelper.calculatePlayerLookMultiplied(player, maxDistance);
+                            //Vec3 shift = PlayerHelper.calculatePlayerLookMultiplied(player, maximalEffectiveDistance);
                             //smokePos = PlayerHelper.getPlayersHeadPositionVector(player).addVector(shift.xCoord, shift.yCoord, shift.zCoord);
                             break;
 
@@ -143,10 +155,10 @@ public class ItemGun extends ItemDawn implements IItemGun {
                     }
 
                     Vec3 gunSmoke = addVector(getPlayersHeadPositionVector(player), multiplyVector(player.worldObj.getWorldVec3Pool(), player.getLookVec().normalize(), 1));
-                    NetworkHelper.sendToAllAround(player, SMOKE_EFFECT_VISIBILITY, new SpawnParticlePacket(SpawnType.GUNPOWDER_SMOKE, player.dimension, gunSmoke).makePacket());
+                    //NetworkHelper.sendToAllAround(player, SMOKE_EFFECT_VISIBILITY, new SpawnParticlePacket(SpawnType.GUNPOWDER_SMOKE, player.dimension, gunSmoke).makePacket());
                 } else { // is client
-                    player.rotationPitch -= RandomHelper.generateRandomFromInterval(kickVerticalMinAfterFire, kickVerticalMaxAfterFire);
-                    player.rotationYaw -= RandomHelper.generateRandomFromInterval(kickHorizontalMinAfterFire, kickHorizontalMaxAfterFire);
+                    //player.rotationPitch -= RandomHelper.generateRandomFromInterval(kickVerticalMinAfterFire, kickVerticalMaxAfterFire);
+                    //player.rotationYaw -= RandomHelper.generateRandomFromInterval(kickHorizontalMinAfterFire, kickHorizontalMaxAfterFire);
                 }
                 ammo--;
                 setAmmoLeft(stack, ammo);
@@ -155,6 +167,16 @@ public class ItemGun extends ItemDawn implements IItemGun {
         }
 
         return stack;
+    }
+
+    private int calculateBulletDamage(double distance) {
+        if (distance < 0) throw new RuntimeException("wrong distance");
+        if (distance <= maximalEffectiveDistance) return damagePerBullet;
+        if (distance > maximalEffectiveDistance + fadeOutDamageDistance) return 0;
+
+        double subDist = distance - maximalEffectiveDistance;
+        double coef = 1 - (1 / fadeOutDamageDistance * subDist);
+        return (int) Math.round(damagePerBullet * coef);
     }
 
     @Override
@@ -226,7 +248,7 @@ public class ItemGun extends ItemDawn implements IItemGun {
     }
 
     @Override
-    public float getMaxDistance() {
-        return maxDistance;
+    public float getMaximalEffectiveDistance() {
+        return maximalEffectiveDistance;
     }
 }

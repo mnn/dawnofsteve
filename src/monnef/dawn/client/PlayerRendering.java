@@ -6,6 +6,7 @@ package monnef.dawn.client;
 
 import monnef.dawn.item.ArmorModelEnum;
 import monnef.dawn.item.ISpecialArmorModel;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.src.RenderPlayerAPI;
@@ -46,7 +47,7 @@ public class PlayerRendering extends RenderPlayerBase {
             GL11.glTranslatef(0, -22 * U, 0);
 
             if (var1.isSneaking()) {
-                GL11.glTranslatef(0, 3 * U, 0);
+                GL11.glTranslatef(0, ((var1 instanceof EntityPlayerSP) ? 1 : 3) * U, 0);
             }
 
             GL11.glRotatef(f3, 0, 1, 0); // ok

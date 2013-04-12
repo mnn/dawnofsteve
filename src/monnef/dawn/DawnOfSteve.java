@@ -13,6 +13,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
+import monnef.core.MonnefCorePlugin;
 import monnef.core.utils.CustomLogger;
 import monnef.core.utils.IDProvider;
 import monnef.core.utils.RegistryUtils;
@@ -23,9 +24,8 @@ import monnef.dawn.common.PlayerWorldHandlers;
 import monnef.dawn.common.Reference;
 import monnef.dawn.item.ArmorModelEnum;
 import monnef.dawn.item.ItemArmorDawn;
-import monnef.dawn.item.ItemBlunderbuss;
 import monnef.dawn.item.ItemDawnSword;
-import monnef.dawn.item.ItemSabre;
+import monnef.dawn.item.ItemGun;
 import monnef.dawn.network.DawnPacketHandler;
 import monnef.dawn.server.PlayerHooksServer;
 import net.minecraft.src.ServerPlayerAPI;
@@ -40,6 +40,7 @@ import static monnef.dawn.common.Reference.ModName;
 import static monnef.dawn.common.Reference.Version;
 import static monnef.dawn.item.ItemArmorDawn.ArmorType;
 import static monnef.dawn.item.ItemArmorDawn.EnumArmorMaterialDawn01;
+import static monnef.dawn.item.ItemGun.AmmoRequirement;
 
 @Mod(modid = ModId, name = ModName, version = Version, dependencies = "required-after:" + monnef.core.Reference.ModId)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = CHANNEL, packetHandler = DawnPacketHandler.class)
@@ -51,6 +52,8 @@ public class DawnOfSteve {
     public static final String HATBLACK = "hatBlack";
     public static final String SABRE = "sabre";
     public static final String KNIFE = "knife";
+    public static final String RIFLE = "rifle";
+    public static final String BAYONET = "bayonet";
 
     @Mod.Instance(ModId)
     public static DawnOfSteve instance;
@@ -61,7 +64,10 @@ public class DawnOfSteve {
 
     public static CustomLogger Log = new CustomLogger(ModId);
 
-    public static ItemBlunderbuss blunderbuss;
+    public static ItemGun blunderbuss;
+    public static ItemGun rifle;
+    public static ItemGun bayonet;
+
     public static ItemArmorDawn hatBlack;
     public static ItemArmorDawn blueChest;
     public static ItemArmorDawn blueBoots;
@@ -94,8 +100,19 @@ public class DawnOfSteve {
     }
 
     private void createItems(IDProvider provider) {
-        blunderbuss = new ItemBlunderbuss(provider.getItemIDFromConfig(BLUNDERBUSS));
-        LanguageRegistry.addName(blunderbuss, "Blunderbuss");
+        int clipSize = MonnefCorePlugin.debugEnv ? 20 : 1;
+
+        blunderbuss = new ItemGun(provider.getItemIDFromConfig(BLUNDERBUSS));
+        blunderbuss.initBasic(AmmoRequirement.BULLETS_SMALL, clipSize, 10, 10);
+        RegistryUtils.registerItem(blunderbuss, BLUNDERBUSS, "Blunderbuss");
+
+        rifle = new ItemGun(provider.getItemIDFromConfig(RIFLE));
+        rifle.initBasic(AmmoRequirement.BULLETS_SMALL, clipSize, 30, 10);
+        RegistryUtils.registerItem(rifle, RIFLE, "Rifle");
+
+        bayonet = new ItemGun(provider.getItemIDFromConfig(BAYONET));
+        bayonet.initBasic(AmmoRequirement.BULLETS_SMALL, clipSize, 20, 10).setHitCollDown(30).setMeleeDamage(8);
+        RegistryUtils.registerItem(bayonet, BAYONET, "Rifle with Bayonet");
 
         renderIndexArmor01 = proxy.addArmor("armorBlue");
 
@@ -109,9 +126,9 @@ public class DawnOfSteve {
         blueLegs = new ItemArmorDawn(provider.getItemIDFromConfig(BLUE_LEGS), EnumArmorMaterialDawn01, renderIndexArmor01, ArmorType.leggings, "/armor01b.png", ArmorModelEnum.NONE);
         RegistryUtils.registerItem(blueLegs, BLUE_LEGS, BLUE_LEGS);
 
-        sabre = new ItemDawnSword(provider.getItemIDFromConfig(SABRE), ItemDawnSword.enumToolMaterialSabre);
+        sabre = new ItemDawnSword(provider.getItemIDFromConfig(SABRE), 6);
         RegistryUtils.registerItem(sabre, SABRE, "Sabre");
-        knife = new ItemDawnSword(provider.getItemIDFromConfig(KNIFE), ItemDawnSword.enumToolMaterialSabre);
+        knife = new ItemDawnSword(provider.getItemIDFromConfig(KNIFE), 6);
         RegistryUtils.registerItem(knife, KNIFE, "Warknife");
     }
 

@@ -11,7 +11,7 @@ public interface IItemGun {
 
     int getClipSize();
 
-    float getMaxDistance();
+    float getMaximalEffectiveDistance();
 
     void initNBT(ItemStack stack);
 

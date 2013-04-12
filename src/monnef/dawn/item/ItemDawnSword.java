@@ -1,14 +1,12 @@
 package monnef.dawn.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.EnumToolMaterial;
 
 public class ItemDawnSword extends ItemDawn implements IHitWithCoolDown {
-    private int meleeDamage;
 
     public ItemDawnSword(int par1, int damage) {
         super(par1);
+        setMeleeDamage(damage);
     }
 
     @Override
@@ -17,7 +15,7 @@ public class ItemDawnSword extends ItemDawn implements IHitWithCoolDown {
     }
 
     @Override
-    public int getDamageVsEntity(Entity par1Entity) {
-        return this.meleeDamage;
+    public boolean isFull3D() {
+        return true;
     }
 }

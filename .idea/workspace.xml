@@ -84,7 +84,7 @@
     <file path="/RandomHelper.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365697851647" ignored="false" />
     <file path="/ClientTicker.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365711268354" ignored="false" />
     <file path="/ItemDawn.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365713583194" ignored="false" />
-    <file path="/ItemDawnSword.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365786405059" ignored="false" />
+    <file path="/ItemDawnSword.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365791916644" ignored="false" />
     <file path="/DoSCommand.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365790084283" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -192,7 +192,7 @@
       <file leaf-file-name="ItemDawn.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/monnef/dawn/item/ItemDawn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="15" selection-start="1035" selection-end="1035" vertical-scroll-proportion="0.0">
+            <state line="12" column="13" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -201,7 +201,7 @@
       <file leaf-file-name="PlayerRendering.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/PlayerRendering.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="55" selection-start="1356" selection-end="1356" vertical-scroll-proportion="0.682971">
+            <state line="52" column="40" selection-start="1911" selection-end="1911" vertical-scroll-proportion="0.6852174">
               <folding />
             </state>
           </provider>
@@ -210,7 +210,7 @@
       <file leaf-file-name="ItemDawnSword.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/monnef/dawn/item/ItemDawnSword.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="27" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+            <state line="15" column="39" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -244,12 +244,12 @@
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/ClientTicker.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemSabre.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemBlunderbuss.java" />
-        <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemDawnSword.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemDawn.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemGun.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/server/DoSCommand.java" />
         <option value="$PROJECT_DIR$/core/src/monnef/core/utils/PlayerHelper.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemDawnSword.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/PlayerRendering.java" />
       </list>
     </option>
@@ -710,7 +710,9 @@
         <option name="TRANSPORT" value="0" />
         <option name="LOCAL" value="true" />
       </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
       <method>
         <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_afterHookDawn_1.5.1" />
       </method>
@@ -742,7 +744,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3549107" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3549107" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Kahlua" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -750,12 +752,12 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.16964285" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.17633928" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.46763393" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.48660713" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -848,20 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/item/ItemDawnSword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="27" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/item/ItemSword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="58" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/command/CommandBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="22" selection-start="2051" selection-end="2051" vertical-scroll-proportion="0.33333334">
@@ -922,14 +910,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/item/ItemDawn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="15" selection-start="1035" selection-end="1035" vertical-scroll-proportion="0.0">
+        <state line="12" column="13" selection-start="275" selection-end="275" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/item/ItemSword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="58" selection-start="887" selection-end="887" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/item/ItemDawnSword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="39" selection-start="321" selection-end="321" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/PlayerRendering.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="55" selection-start="1356" selection-end="1356" vertical-scroll-proportion="0.682971">
+        <state line="52" column="40" selection-start="1911" selection-end="1911" vertical-scroll-proportion="0.6852174">
           <folding />
         </state>
       </provider>

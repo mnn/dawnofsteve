@@ -44,14 +44,14 @@ public class PlayerRendering extends RenderPlayerBase {
             double yF = y - (double) var1.yOffset;
             GL11.glTranslatef((float) x, (float) yF, (float) z);
             GL11.glRotatef(180, 1, 0, 0);
-            GL11.glTranslatef(0, -22 * U, 0);
+            GL11.glTranslatef(0, -23 * U, 0);
 
             if (var1.isSneaking()) {
                 GL11.glTranslatef(0, ((var1 instanceof EntityPlayerSP) ? 1 : 3) * U, 0);
             }
 
-            GL11.glRotatef(f3, 0, 1, 0); // ok
-            GL11.glRotatef(var1.rotationPitch, 1, 0, 0);  // . . 1
+            GL11.glRotatef(f3, 0, 1, 0);
+            GL11.glRotatef(var1.rotationPitch, 1, 0, 0);
             GL11.glTranslatef(0, -30 * U, 0); // 24 is exactly like the head
             this.renderPlayer.localLoadTexture("/hat01.png");
             hat.render(var1, 0, 0, 0, 0, 0, U);

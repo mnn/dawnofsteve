@@ -5,6 +5,7 @@
 package monnef.dawn.entity;
 
 import monnef.core.utils.PlayerHelper;
+import monnef.dawn.client.SoundsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +31,7 @@ public class EntityKit extends Entity {
     private int maximalTicks = -1; // dies without type
 
     public enum KitType {
-        AMMO(Constants.KIT_LIFE_LEN), MEDPACK(Constants.KIT_LIFE_LEN), RATION(Constants.KIT_LIFE_LEN);
+        AMMO(30), MEDPACK(20), RATION(40);
         public static KitType[] packs;
 
         static {
@@ -46,10 +47,6 @@ public class EntityKit extends Entity {
         public int getSecondsToLive() {
             return secondsToLive;
         }
-
-        private static class Constants {
-            public static final int KIT_LIFE_LEN = 30;
-        }
     }
 
     public EntityKit(World world, EntityPlayer player, ItemStack stack) {
@@ -63,6 +60,7 @@ public class EntityKit extends Entity {
         this.motionX = m.xCoord;
         this.motionY = m.yCoord;
         this.motionZ = m.zCoord;
+        setRotation(player.rotationYaw, 0);
     }
 
     public EntityKit(World par1World) {
@@ -168,6 +166,7 @@ public class EntityKit extends Entity {
         }
 
         if (used) {
+            SoundsHandler.playSoundAtEntity(this, SoundsHandler.CLICK, 1, 1);
             setDead();
         }
     }

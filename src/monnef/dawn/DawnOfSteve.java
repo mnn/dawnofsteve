@@ -20,6 +20,7 @@ import monnef.core.utils.IDProvider;
 import monnef.core.utils.RegistryUtils;
 import monnef.dawn.client.ClientTicker;
 import monnef.dawn.client.DawnCreativeTab;
+import monnef.dawn.client.SoundsHandler;
 import monnef.dawn.common.CommonProxy;
 import monnef.dawn.common.PlayerWorldHandlers;
 import monnef.dawn.common.Reference;
@@ -109,6 +110,8 @@ public class DawnOfSteve {
         } finally {
             config.save();
         }
+
+        MinecraftForge.EVENT_BUS.register(new SoundsHandler());
     }
 
     private void createItems(IDProvider provider) {

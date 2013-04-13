@@ -24,23 +24,24 @@ public class EntityKitRenderer extends Render {
         renderKit((EntityKit) entity, x, y, z, f, f1);
     }
 
-    public void renderKit(EntityKit entity, double x, double y, double z, float f, float f1) {
+    public void renderKit(EntityKit entity, double x, double y, double z, float yaw, float f1) {
         GL11.glPushMatrix();
 
         GL11.glTranslated(x, y + 1.5, z);
         GL11.glScalef(1.0F, -1.0F, -1.0F);
+        GL11.glRotatef(yaw, 0, 1, 0);
         switch (entity.getType()) {
             case AMMO:
                 loadTexture("/box.png");
-                box.render(entity, f, f1, 0, 0, 0, U);
+                box.render(entity, yaw, f1, 0, 0, 0, U);
                 break;
             case MEDPACK:
                 loadTexture("/medpack.png");
-                medpack.render(entity, f, f1, 0, 0, 0, U);
+                medpack.render(entity, yaw, f1, 0, 0, 0, U);
                 break;
             case RATION:
                 loadTexture("/ration.png");
-                rations.render(entity, f, f1, 0, 0, 0, U);
+                rations.render(entity, yaw, f1, 0, 0, 0, U);
                 break;
             default:
                 throw new RuntimeException("unknown kit");

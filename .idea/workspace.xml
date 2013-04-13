@@ -26,7 +26,7 @@
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/core/utils/CustomLogger.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365345015276" ignored="false" />
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/core/utils/MathHelper.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365345015276" ignored="false" />
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/core/utils/RegistryUtils.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365345056612" ignored="false" />
-    <file path="/DawnOfSteve.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365863006321" ignored="false" />
+    <file path="/DawnOfSteve.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365887177708" ignored="false" />
     <file path="$PROJECT_DIR$/core/src/monnef/core/IModReference.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365346813899" ignored="false" />
     <file path="/Reference.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365443936711" ignored="false" />
     <file path="/ClientProxy.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365857473708" ignored="false" />
@@ -96,10 +96,12 @@
     <file path="/symbol3.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365798686466" ignored="false" />
     <file path="/symbol4.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365798678757" ignored="false" />
     <file path="/symbol5.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365798764863" ignored="false" />
-    <file path="/EntityKit.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365871622125" ignored="false" />
-    <file path="/EntityKitRenderer.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365868896945" ignored="false" />
+    <file path="/EntityKit.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365891128991" ignored="false" />
+    <file path="/EntityKitRenderer.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365875396484" ignored="false" />
     <file path="/ItemKitBag.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365863212083" ignored="false" />
     <file path="/VectorUtils.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365860966720" ignored="false" />
+    <file path="/SoundsLoader.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365887764495" ignored="false" />
+    <file path="/SoundsHandler.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365891218389" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,22 +161,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EntityKit.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="EntityKit.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/monnef/dawn/entity/EntityKit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="63" selection-start="3834" selection-end="3834" vertical-scroll-proportion="0.45652175">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="class#KitType#0;class#EntityKit#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Entity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/Entity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="461" column="54" selection-start="13995" selection-end="13995" vertical-scroll-proportion="0.0">
+            <state line="168" column="48" selection-start="5179" selection-end="5179" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -182,46 +172,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityPlayer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/player/EntityPlayer.java">
+      <file leaf-file-name="World.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/world/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2112" column="19" selection-start="68022" selection-end="68022" vertical-scroll-proportion="0.0">
+            <state line="1503" column="0" selection-start="49987" selection-end="49987" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerWorldHandlers.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/monnef/dawn/common/PlayerWorldHandlers.java">
+      <file leaf-file-name="WorldManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/world/WorldManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="8" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
+            <state line="53" column="0" selection-start="1969" selection-end="1969" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityItem.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/item/EntityItem.java">
+      <file leaf-file-name="MinecraftServer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/server/MinecraftServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="59" selection-start="3358" selection-end="3480" vertical-scroll-proportion="0.0">
+            <state line="1266" column="0" selection-start="39048" selection-end="39048" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VectorUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/monnef/core/utils/VectorUtils.java">
+      <file leaf-file-name="SoundsHandler.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/SoundsHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="23" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EntityMinecart.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/item/EntityMinecart.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="438" column="43" selection-start="14663" selection-end="14663" vertical-scroll-proportion="-17.2">
+            <state line="36" column="61" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.72282606">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -229,13 +210,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityKitRenderer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/EntityKitRenderer.java">
+      <file leaf-file-name="SoundPool.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/audio/SoundPool.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="56" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="62" column="68" selection-start="1781" selection-end="1834" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DawnOfSteve.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="112" column="61" selection-start="4357" selection-end="4357" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -250,8 +238,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/monnef/dawn/client/ModelSymbol3.java" />
-        <option value="$PROJECT_DIR$/src/monnef/dawn/client/symbol4.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/ModelSymbol4.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/model/ModelSymbol3.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/symbol5.java" />
@@ -260,12 +246,14 @@
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/PlayerHooksClient.java" />
         <option value="$PROJECT_DIR$/core/src/monnef/core/utils/VectorUtils.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/ClientProxy.java" />
-        <option value="$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemKitBag.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/common/PlayerWorldHandlers.java" />
-        <option value="$PROJECT_DIR$/src/monnef/dawn/client/EntityKitRenderer.java" />
         <option value="$PROJECT_DIR$/core/src/monnef/core/utils/PlayerHelper.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/client/EntityKitRenderer.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/client/SoundsLoader.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/entity/EntityKit.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/client/SoundsHandler.java" />
       </list>
     </option>
   </component>
@@ -815,11 +803,11 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.296875" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.15736607" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.3404018" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.4799107" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -887,123 +875,122 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/model/ModelAmmoBox.java">
+    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/common/PlayerWorldHandlers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="16" selection-start="2031" selection-end="2031" vertical-scroll-proportion="0.7850575">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/EntityLiving.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="386" column="19" selection-start="12744" selection-end="12744" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/server/PlayerHooksServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="355" selection-end="355" vertical-scroll-proportion="0.11724138">
+        <state line="19" column="0" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/EntityKitRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="56" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0">
+        <state line="28" column="0" selection-start="869" selection-end="869" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/monnef/core/utils/PlayerHelper.java">
+    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/server/PlayerHooksServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="0" selection-start="891" selection-end="891" vertical-scroll-proportion="0.42572463">
+        <state line="40" column="43" selection-start="1222" selection-end="1222" vertical-scroll-proportion="0.6057471">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/world/IWorldAccess.java">
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="9" selection-start="1319" selection-end="1319" vertical-scroll-proportion="0.33333334">
+        <state line="1048" column="16" selection-start="32928" selection-end="32928" vertical-scroll-proportion="0.3320965">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/network/packet/Packet62LevelSound.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="0" selection-start="1031" selection-end="1031" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/renderer/RenderGlobal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1871" column="0" selection-start="77846" selection-end="77846" vertical-scroll-proportion="0.3320965">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/apps/Java/jdk1.6.0_35/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2066" column="24" selection-start="87432" selection-end="87432" vertical-scroll-proportion="0.51811594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/multiplayer/WorldClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="449" column="16" selection-start="14222" selection-end="14222" vertical-scroll-proportion="0.14855072">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/world/WorldManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="0" selection-start="1969" selection-end="1969" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/server/MinecraftServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1266" column="0" selection-start="39048" selection-end="39048" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/audio/SoundPoolEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="11" selection-start="256" selection-end="256" vertical-scroll-proportion="0.307971">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/world/World.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1523" column="61" selection-start="50837" selection-end="50837" vertical-scroll-proportion="0.45825604">
+        <state line="1503" column="0" selection-start="49987" selection-end="49987" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/common/PlayerWorldHandlers.java">
+    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="8" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
+        <state line="112" column="61" selection-start="4357" selection-end="4357" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/entity/EntityPlayerSP.java">
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/audio/SoundPool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1724" column="17" selection-start="44738" selection-end="44738" vertical-scroll-proportion="0.33279222">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/monnef/core/utils/VectorUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="23" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/util/AxisAlignedBB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="18" selection-start="209" selection-end="209" vertical-scroll-proportion="0.1973466">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/item/EntityMinecart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="438" column="43" selection-start="14663" selection-end="14663" vertical-scroll-proportion="-17.2">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="461" column="54" selection-start="13995" selection-end="13995" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/player/EntityPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2112" column="19" selection-start="68022" selection-end="68022" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/item/EntityItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="59" selection-start="3358" selection-end="3480" vertical-scroll-proportion="0.0">
+        <state line="62" column="68" selection-start="1781" selection-end="1834" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/entity/EntityKit.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="63" selection-start="3834" selection-end="3834" vertical-scroll-proportion="0.45652175">
+        <state line="168" column="48" selection-start="5179" selection-end="5179" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#KitType#0;class#EntityKit#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/SoundsHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="61" selection-start="1144" selection-end="1144" vertical-scroll-proportion="0.72282606">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

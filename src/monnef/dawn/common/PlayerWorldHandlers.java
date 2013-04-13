@@ -13,7 +13,9 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 public class PlayerWorldHandlers {
     @ForgeSubscribe
     public void onItemToss(ItemTossEvent evt) {
-        evt.setCanceled(true);
+        if (!evt.player.capabilities.isCreativeMode) {
+            evt.setCanceled(true);
+        }
     }
 
     @ForgeSubscribe

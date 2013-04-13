@@ -14,7 +14,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelBox extends ModelBase {
+public class ModelAmmoBox extends ModelBase {
     //fields
     ModelRenderer Shape1;
     ModelRenderer Shape2;
@@ -22,7 +22,7 @@ public class ModelBox extends ModelBase {
     ModelRenderer Shape4;
     ModelRenderer Shape5;
 
-    public ModelBox() {
+    public ModelAmmoBox() {
         textureWidth = 128;
         textureHeight = 64;
 

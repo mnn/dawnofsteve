@@ -10,6 +10,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -22,10 +23,12 @@ import monnef.dawn.client.DawnCreativeTab;
 import monnef.dawn.common.CommonProxy;
 import monnef.dawn.common.PlayerWorldHandlers;
 import monnef.dawn.common.Reference;
+import monnef.dawn.entity.EntityKit;
 import monnef.dawn.item.ArmorModelEnum;
 import monnef.dawn.item.ItemArmorDawn;
 import monnef.dawn.item.ItemDawnSword;
 import monnef.dawn.item.ItemGun;
+import monnef.dawn.item.ItemKitBag;
 import monnef.dawn.network.DawnPacketHandler;
 import monnef.dawn.server.PlayerHooksServer;
 import net.minecraft.src.ServerPlayerAPI;
@@ -54,6 +57,9 @@ public class DawnOfSteve {
     public static final String KNIFE = "knife";
     public static final String RIFLE = "rifle";
     public static final String BAYONET = "bayonet";
+    public static final String AMMO_BAG = "ammoBag";
+    public static final String MEDIC_BAG = "medicBag";
+    public static final String RATION_BAG = "rationBag";
 
     @Mod.Instance(ModId)
     public static DawnOfSteve instance;
@@ -75,6 +81,11 @@ public class DawnOfSteve {
     public static ItemDawnSword sabre;
     public static ItemDawnSword knife;
 
+    public static ItemKitBag ammoBag;
+    public static ItemKitBag medicBag;
+    public static ItemKitBag rationBag;
+    private static final String ENTITY_NAME_KIT = "dawnKit";
+
     private int renderIndexArmor01;
 
     @Mod.PreInit
@@ -91,6 +102,7 @@ public class DawnOfSteve {
             provider.linkWithConfig(config);
 
             createItems(provider);
+            createEntities(provider);
 
         } catch (Exception e) {
             FMLLog.log(Level.SEVERE, e, "Mod \"" + Reference.ModName + "\" can't read config file.");
@@ -130,6 +142,13 @@ public class DawnOfSteve {
         RegistryUtils.registerItem(sabre, SABRE, "Sabre");
         knife = new ItemDawnSword(provider.getItemIDFromConfig(KNIFE), 6);
         RegistryUtils.registerItem(knife, KNIFE, "Warknife");
+
+        ammoBag = new ItemKitBag(provider.getItemIDFromConfig(AMMO_BAG), EntityKit.KitType.AMMO);
+        RegistryUtils.registerItem(ammoBag, AMMO_BAG, "Bag with Ammo");
+        medicBag = new ItemKitBag(provider.getItemIDFromConfig(MEDIC_BAG), EntityKit.KitType.MEDPACK);
+        RegistryUtils.registerItem(medicBag, MEDIC_BAG, "Medic's Bag");
+        rationBag = new ItemKitBag(provider.getItemIDFromConfig(RATION_BAG), EntityKit.KitType.RATION);
+        RegistryUtils.registerItem(rationBag, RATION_BAG, "Bag with Rations");
     }
 
     @Mod.Init
@@ -142,6 +161,10 @@ public class DawnOfSteve {
         TickRegistry.registerTickHandler(new ClientTicker(), Side.CLIENT);
 
         printInitializedMessage();
+    }
+
+    private void createEntities(IDProvider provider) {
+        EntityRegistry.registerModEntity(EntityKit.class, ENTITY_NAME_KIT, provider.getEntityIDFromConfig(ENTITY_NAME_KIT), this, 160, 1, true);
     }
 
     private void printInitializedMessage() {

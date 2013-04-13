@@ -5,7 +5,6 @@
 package monnef.dawn.client;
 
 import cpw.mods.fml.relauncher.ReflectionHelper;
-import monnef.dawn.DawnOfSteve;
 import monnef.dawn.common.PlayerInfo;
 import monnef.dawn.item.IHitWithCoolDown;
 import monnef.dawn.network.NetworkHelper;
@@ -31,6 +30,7 @@ public class PlayerHooksClient extends PlayerBase {
         instance = this;
         leftClickCounterField = ReflectionHelper.findField(Minecraft.class, "leftClickCounter", "field_71429_W");
         objMouseOver = ReflectionHelper.findField(Minecraft.class, "objectMouseOver", "field_71476_x");
+        player.setSpeedInAirField(0.01f);
     }
 
     @Override
@@ -93,5 +93,21 @@ public class PlayerHooksClient extends PlayerBase {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public float getSpeedModifier() {
+        if (player.isSprinting()) {
+            return 0.87f; // -> 13% faster when sprinting
+        }
+        return super.getSpeedModifier();
+    }
+
+    @Override
+    public boolean isSprinting() {
+        if (player.capabilities.isCreativeMode) {
+            player.setSprinting(false);
+        }
+        return super.isSprinting();
     }
 }

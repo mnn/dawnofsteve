@@ -25,11 +25,13 @@ import monnef.dawn.common.CommonProxy;
 import monnef.dawn.common.PlayerWorldHandlers;
 import monnef.dawn.common.Reference;
 import monnef.dawn.entity.EntityKit;
+import monnef.dawn.entity.EntitySplashBomb;
 import monnef.dawn.item.ArmorModelEnum;
 import monnef.dawn.item.ItemArmorDawn;
 import monnef.dawn.item.ItemDawnSword;
 import monnef.dawn.item.ItemGun;
 import monnef.dawn.item.ItemKitBag;
+import monnef.dawn.item.ItemSplashBomb;
 import monnef.dawn.network.DawnPacketHandler;
 import monnef.dawn.server.PlayerHooksServer;
 import net.minecraft.src.ServerPlayerAPI;
@@ -61,6 +63,7 @@ public class DawnOfSteve {
     public static final String AMMO_BAG = "ammoBag";
     public static final String MEDIC_BAG = "medicBag";
     public static final String RATION_BAG = "rationBag";
+    public static final String SPLASH_BOMB = "splashBomb";
 
     @Mod.Instance(ModId)
     public static DawnOfSteve instance;
@@ -86,6 +89,9 @@ public class DawnOfSteve {
     public static ItemKitBag medicBag;
     public static ItemKitBag rationBag;
     private static final String ENTITY_NAME_KIT = "dawnKit";
+
+    public static ItemSplashBomb splashBomb;
+    private static final String ENTITY_NAME_SPLASH_BOMB = "dawnSplashBomb";
 
     private int renderIndexArmor01;
 
@@ -152,6 +158,9 @@ public class DawnOfSteve {
         RegistryUtils.registerItem(medicBag, MEDIC_BAG, "Medic's Bag");
         rationBag = new ItemKitBag(provider.getItemIDFromConfig(RATION_BAG), EntityKit.KitType.RATION);
         RegistryUtils.registerItem(rationBag, RATION_BAG, "Bag with Rations");
+
+        splashBomb = new ItemSplashBomb(provider.getItemIDFromConfig(SPLASH_BOMB));
+        RegistryUtils.registerItem(splashBomb, SPLASH_BOMB, "Bomb");
     }
 
     @Mod.Init
@@ -167,7 +176,8 @@ public class DawnOfSteve {
     }
 
     private void createEntities(IDProvider provider) {
-        EntityRegistry.registerModEntity(EntityKit.class, ENTITY_NAME_KIT, provider.getEntityIDFromConfig(ENTITY_NAME_KIT), this, 160, 1, true);
+        EntityRegistry.registerModEntity(EntityKit.class, ENTITY_NAME_KIT, provider.getModEntityIDFromConfig(ENTITY_NAME_KIT), this, 160, 20, true);
+        EntityRegistry.registerModEntity(EntitySplashBomb.class, ENTITY_NAME_SPLASH_BOMB, provider.getModEntityIDFromConfig(ENTITY_NAME_SPLASH_BOMB), this, 160, 2, true);
     }
 
     private void printInitializedMessage() {

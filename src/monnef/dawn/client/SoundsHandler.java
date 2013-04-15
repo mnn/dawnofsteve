@@ -13,8 +13,9 @@ import net.minecraftforge.event.ForgeSubscribe;
 
 import java.net.URL;
 
+import static monnef.dawn.client.SoundsEnum.CLICK;
+
 public class SoundsHandler {
-    public static final String CLICK = "dawn_click.wav";
     private static SoundManager manager;
 
     @ForgeSubscribe
@@ -28,15 +29,14 @@ public class SoundsHandler {
         }
     }
 
-    private void loadSound(String fileName) {
-        String path = "/mods/" + Reference.ModName + "/sounds/" + fileName;
+    private void loadSound(SoundsEnum sound) {
+        String path = "/mods/" + Reference.ModName + "/sounds/" + sound.getFileName();
         URL resource = DawnOfSteve.class.getResource(path);
         if (resource == null) throw new RuntimeException("Not found: \"" + path + "\".");
-        manager.soundPoolSounds.addSound(fileName, resource);
+        manager.soundPoolSounds.addSound(sound.getFileName(), resource);
     }
 
-    public static void playSoundAtEntity(Entity entity, String id, int volume, int pitch) {
-        id = id.substring(0, id.indexOf("."));
-        entity.worldObj.playSound(entity.posX, entity.posY, entity.posZ, id, volume, pitch, false);
+    public static void playSoundAtEntity(Entity entity, SoundsEnum sound, int volume, int pitch) {
+        entity.worldObj.playSound(entity.posX, entity.posY, entity.posZ, sound.getPlayName(), volume, pitch, false);
     }
 }

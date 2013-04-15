@@ -5,6 +5,7 @@
 package monnef.dawn.entity;
 
 import monnef.core.utils.PlayerHelper;
+import monnef.dawn.client.SoundsEnum;
 import monnef.dawn.client.SoundsHandler;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -166,7 +167,7 @@ public class EntityKit extends Entity {
         }
 
         if (used) {
-            SoundsHandler.playSoundAtEntity(this, SoundsHandler.CLICK, 1, 1);
+            SoundsHandler.playSoundAtEntity(this, SoundsEnum.CLICK, 1, 1);
             setDead();
         }
     }

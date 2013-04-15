@@ -7,9 +7,10 @@ package monnef.dawn.client;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
+import monnef.dawn.DawnOfSteve;
 import monnef.dawn.common.CommonProxy;
 import monnef.dawn.entity.EntityKit;
+import monnef.dawn.entity.EntitySplashBomb;
 import monnef.dawn.network.packet.SpawnParticlePacket;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.particle.EntitySmokeFX;
@@ -27,6 +28,7 @@ public class ClientProxy extends CommonProxy {
             KeyBindingRegistry.registerKeyBinding(new DawnKeyHandler());
         }
         RenderingRegistry.registerEntityRenderingHandler(EntityKit.class, new EntityKitRenderer());
+        RenderingRegistry.registerEntityRenderingHandler(EntitySplashBomb.class, new RenderItemInAir(DawnOfSteve.splashBomb));
     }
 
     @Override

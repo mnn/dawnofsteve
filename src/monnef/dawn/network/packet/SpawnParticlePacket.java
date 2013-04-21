@@ -8,7 +8,6 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.relauncher.Side;
 import monnef.dawn.DawnOfSteve;
-import monnef.dawn.client.ClientTicker;
 import monnef.dawn.network.DawnPacket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.Vec3;
@@ -18,7 +17,8 @@ import java.net.ProtocolException;
 public class SpawnParticlePacket extends DawnPacket {
     public enum SpawnType {
         BULLET_SMOKE,
-        GUNPOWDER_SMOKE
+        GUNPOWDER_SMOKE,
+        BOMB_EXPLOSION
     }
 
     private SpawnType type;

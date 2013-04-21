@@ -4,6 +4,10 @@
 
 package monnef.dawn.entity;
 
+import monnef.core.utils.EntityHelper;
+import monnef.core.utils.VectorUtils;
+import monnef.dawn.network.NetworkHelper;
+import monnef.dawn.network.packet.SpawnParticlePacket;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
@@ -11,6 +15,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 public class EntitySplashBomb extends EntityThrowable {
+    private static final double EXPLOSION_VISIBILITY = 16 * 15;
+
     public EntitySplashBomb(World par1World) {
         super(par1World);
     }
@@ -25,16 +31,13 @@ public class EntitySplashBomb extends EntityThrowable {
             movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 2);
         }
 
-        if (worldObj.isRemote) {
-            this.worldObj.spawnParticle("hugeexplosion", this.posX, this.posY, this.posZ, 1.0D, 0.0D, 0.0D);
-            this.worldObj.spawnParticle("largeexplode", this.posX, this.posY, this.posZ, 1.0D, 0.0D, 0.0D);
-        } else {
+        if (!this.worldObj.isRemote) {
             this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, "random.explode", 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
+            NetworkHelper.sendToAllAround(this, EXPLOSION_VISIBILITY, new SpawnParticlePacket(SpawnParticlePacket.SpawnType.BOMB_EXPLOSION, this.dimension, VectorUtils.getEntityPositionVector(this)).makePacket());
+            this.setDead();
+            EntityHelper.pushEntitiesBack(worldObj, movingobjectposition.hitVec, 0.5f, 5, 5, 0.15f, getThrower());
         }
 
-        if (!this.worldObj.isRemote) {
-            this.setDead();
-        }
     }
 
     @Override

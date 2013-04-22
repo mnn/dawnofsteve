@@ -7,7 +7,6 @@ package monnef.dawn.client;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import monnef.dawn.DawnOfSteve;
 import monnef.dawn.common.CommonProxy;
 import monnef.dawn.entity.EntityKit;
 import monnef.dawn.entity.EntitySplashBomb;
@@ -19,6 +18,7 @@ import net.minecraft.client.particle.EntityHugeExplodeFX;
 import net.minecraft.client.particle.EntityLargeExplodeFX;
 import net.minecraft.client.particle.EntitySmokeFX;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.src.PlayerAPI;
 import net.minecraft.src.RenderPlayerAPI;
 import net.minecraft.world.World;
@@ -35,7 +35,7 @@ public class ClientProxy extends CommonProxy {
             KeyBindingRegistry.registerKeyBinding(new DawnKeyHandler());
         }
         RenderingRegistry.registerEntityRenderingHandler(EntityKit.class, new EntityKitRenderer());
-        RenderingRegistry.registerEntityRenderingHandler(EntitySplashBomb.class, new RenderItemInAir(DawnOfSteve.splashBomb));
+        RenderingRegistry.registerEntityRenderingHandler(EntitySplashBomb.class, new RenderItemInAir(Item.potion)); // TODO change to bomb
     }
 
     @Override

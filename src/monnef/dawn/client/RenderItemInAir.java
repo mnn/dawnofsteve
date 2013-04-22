@@ -4,21 +4,33 @@
 
 package monnef.dawn.client;
 
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.texture.Texture;
+import net.minecraft.client.renderer.texture.TextureStitched;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
 import net.minecraft.util.Icon;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import java.lang.reflect.Field;
+
 public class RenderItemInAir extends Render {
+    private Texture texture;
+    private Icon icon;
+
     public RenderItemInAir(Item item) {
         super();
-        textureFile = item.getIconFromDamage(0);
+        icon = item.getIconFromDamage(0);
+        Field ts = ReflectionHelper.findField(TextureStitched.class, "textureSheet", "field_94228_a");
+        try {
+            texture = (Texture) ts.get(icon);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
-
-    protected Icon textureFile;
 
     public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
         GL11.glPushMatrix();
@@ -27,17 +39,18 @@ public class RenderItemInAir extends Render {
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glScalef(0.5F, 0.5F, 0.5F);
         Tessellator var10 = Tessellator.instance;
-        this.doRender(var10, this.textureFile);
+        texture.bindTexture(0);
+        this.doRender(var10);
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 
         GL11.glPopMatrix();
     }
 
-    private void doRender(Tessellator par1Tessellator, Icon par2Icon) {
-        float f = par2Icon.getMinU();
-        float f1 = par2Icon.getMaxU();
-        float f2 = par2Icon.getMinV();
-        float f3 = par2Icon.getMaxV();
+    private void doRender(Tessellator par1Tessellator) {
+        float f = icon.getMinU();
+        float f1 = icon.getMaxU();
+        float f2 = icon.getMinV();
+        float f3 = icon.getMaxV();
         float f4 = 1.0F;
         float f5 = 0.5F;
         float f6 = 0.25F;

@@ -33,7 +33,7 @@ public class ItemKitBag extends ItemDawn {
     }
 
     @Override
-    public void updateIcons(IconRegister register) {
-        iconIndex = register.registerIcon(Reference.ModName + ":baguni");
+    public void registerIcons(IconRegister register) {
+        itemIcon = register.registerIcon(Reference.ModName + ":baguni");
     }
 }

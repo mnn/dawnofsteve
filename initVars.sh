@@ -15,9 +15,15 @@ function emptyDir {
         echo "Purging directory \"$1\"."
         rm -fr "$1"/* || crash "Cannot purge."
     else
-        echo "Creating directory \"$1\"."
-        mkdir $1
+        createDirIfNeeded "$1"
     fi        
+}
+
+function createDirIfNeeded {
+    if [ ! -d "$1" ]; then
+        echo "Creating directory \"$1\"."
+        mkdir "$1"
+    fi
 }
 
 function printAction {

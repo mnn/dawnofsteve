@@ -20,8 +20,8 @@ public class ItemDawn extends Item {
     }
 
     @Override
-    public void updateIcons(IconRegister register) {
-        this.iconIndex = register.registerIcon(getIconName(this));
+    public void registerIcons(IconRegister register) {
+        this.itemIcon = register.registerIcon(getIconName(this));
     }
 
     public static String getIconName(Item item) {

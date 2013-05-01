@@ -17,7 +17,7 @@
     <file path="/RegistryUtils.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365345055738" ignored="false" />
     <file path="/IItemBlock.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365344182218" ignored="false" />
     <file path="$PROJECT_DIR$/../jaffas/mcp/core/src/monnef/core/utils/CustomLogger.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365344630526" ignored="false" />
-    <file path="/fragment.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1366665183551" ignored="false" />
+    <file path="/fragment.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1367399449418" ignored="false" />
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/jaffas/food/ExtrabiomesHelper.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365344706897" ignored="false" />
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/jaffas/food/JaffasFood.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365344687416" ignored="false" />
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/jaffas/food/block/ItemBlockJaffas.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365344988476" ignored="false" />
@@ -26,7 +26,7 @@
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/core/utils/CustomLogger.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365345015276" ignored="false" />
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/core/utils/MathHelper.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365345015276" ignored="false" />
     <file path="$PROJECT_DIR$/../jaffas/mcp/src/minecraft/monnef/core/utils/RegistryUtils.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365345056612" ignored="false" />
-    <file path="/DawnOfSteve.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1366056965738" ignored="false" />
+    <file path="/DawnOfSteve.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1366667912673" ignored="false" />
     <file path="$PROJECT_DIR$/core/src/monnef/core/IModReference.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365346813899" ignored="false" />
     <file path="/Reference.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1365443936711" ignored="false" />
     <file path="/ClientProxy.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1366666423275" ignored="false" />
@@ -94,6 +94,8 @@
     <file path="/EntityHelper.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1366556531878" ignored="false" />
     <file path="/ItemMonnefCore.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1366665068911" ignored="false" />
     <file path="/RenderItemInAir.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1366667433817" ignored="false" />
+    <file path="/EntityFXBombSmoke.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1366999928808" ignored="false" />
+    <file path="$PROJECT_DIR$/src/monnef/dawn/client/ClientProxy.java" changelist="58b8031e-1151-4143-bbee-8d83373ed341" time="1367399457758" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,8 +110,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -144,6 +144,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -156,7 +158,7 @@
       <file leaf-file-name="EntitySplashBomb.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/monnef/dawn/entity/EntitySplashBomb.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="28" selection-start="1650" selection-end="1650" vertical-scroll-proportion="0.0">
+            <state line="41" column="0" selection-start="1650" selection-end="1650" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -190,9 +192,38 @@
         </entry>
       </file>
       <file leaf-file-name="RenderItemInAir.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/RenderItemInAir.java">
+        <entry file="file://$PROJECT_DIR$/core/src/monnef/core/client/RenderItemInAir.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="29" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.7137681">
+            <state line="19" column="19" selection-start="547" selection-end="547" vertical-scroll-proportion="0.18478261">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DawnOfSteve.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="161" column="0" selection-start="7452" selection-end="7452" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityBombSmokeFX.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/monnef/dawn/entity/EntityBombSmokeFX.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="21" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntitySmokeFX.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/particle/EntitySmokeFX.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="67" column="28" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -202,24 +233,6 @@
         <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/util/Icon.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="5" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RenderSnowball.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/renderer/entity/RenderSnowball.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="21" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientProxy.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/ClientProxy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="96" selection-start="1466" selection-end="1466" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -235,11 +248,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/monnef/dawn/entity/EntityKit.java" />
-        <option value="$PROJECT_DIR$/src/monnef/dawn/client/SoundsEnum.java" />
-        <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemSplashBomb.java" />
         <option value="$PROJECT_DIR$/core/src/monnef/core/utils/IDProvider.java" />
-        <option value="$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java" />
         <option value="$PROJECT_DIR$/core/src/monnef/core/utils/VectorUtils.java" />
         <option value="$PROJECT_DIR$/core/src/monnef/core/utils/EntityHelper.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/network/packet/SpawnParticlePacket.java" />
@@ -251,6 +260,10 @@
         <option value="$PROJECT_DIR$/src/monnef/dawn/item/ItemKitBag.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/ClientProxy.java" />
         <option value="$PROJECT_DIR$/src/monnef/dawn/client/RenderItemInAir.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/entity/EntityFXBombSmoke.java" />
+        <option value="$PROJECT_DIR$/src/monnef/dawn/entity/EntityBombSmokeFX.java" />
+        <option value="$PROJECT_DIR$/core/src/monnef/core/client/RenderItemInAir.java" />
       </list>
     </option>
   </component>
@@ -289,6 +302,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -474,10 +489,6 @@
               <option name="myItemId" value="dawn" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -493,51 +504,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dawn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dawn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dawn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dawn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="item" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dawn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dawn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dawn" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -558,11 +525,13 @@
               <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -599,6 +568,9 @@
       <recent name="monnef.dawn.network" />
       <recent name="monnef.dawn" />
       <recent name="monnef.dawn.common" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="monnef.core.client" />
     </key>
   </component>
   <component name="RunManager" selected="Application.client">
@@ -735,12 +707,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1044" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28348213" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3549107" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
@@ -750,14 +721,15 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.25558037" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.20089285" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.38169643" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18569905" sideWeight="0.43638393" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924107" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28348213" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -822,41 +794,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/monnef/core/base/ItemMonnefCore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="29" selection-start="1200" selection-end="1200" vertical-scroll-proportion="0.570115">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraftforge/common/IArmorTextureProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="32" selection-start="388" selection-end="388" vertical-scroll-proportion="0.21494253">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/item/ItemArmorDawn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="88" selection-start="374" selection-end="374" vertical-scroll-proportion="0.1954023">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/entity/EntityPlayerSP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1671" column="33" selection-start="43172" selection-end="43172" vertical-scroll-proportion="0.99770117">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/entity/player/EntityPlayerMP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4286" column="12" selection-start="114857" selection-end="114857" vertical-scroll-proportion="0.21820304">
-          <folding />
-        </state>
+        <state line="4286" column="12" selection-start="114857" selection-end="114857" vertical-scroll-proportion="0.21820304" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/ClientProxy.java">
@@ -875,30 +815,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/entity/EntitySplashBomb.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="28" selection-start="1650" selection-end="1650" vertical-scroll-proportion="0.0">
+        <state line="41" column="0" selection-start="1650" selection-end="1650" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/renderer/texture/IconRegister.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="214" selection-end="214" vertical-scroll-proportion="0.1367816">
-          <folding />
-        </state>
+        <state line="9" column="0" selection-start="214" selection-end="214" vertical-scroll-proportion="0.1367816" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraftforge/client/ForgeHooksClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="39" selection-start="1296" selection-end="1296" vertical-scroll-proportion="-3.9436781">
-          <folding />
-        </state>
+        <state line="33" column="39" selection-start="1296" selection-end="1296" vertical-scroll-proportion="-3.9436781" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/renderer/texture/TextureMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="40" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.6149358">
-          <folding />
-        </state>
+        <state line="52" column="40" selection-start="1848" selection-end="1848" vertical-scroll-proportion="0.6149358" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/monnef/dawn/item/ItemDawn.java">
@@ -929,9 +863,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/client/RenderItemInAir.java">
+    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/DawnOfSteve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="29" selection-start="1369" selection-end="1369" vertical-scroll-proportion="0.7137681">
+        <state line="161" column="0" selection-start="7452" selection-end="7452" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/particle/EntitySmokeFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="28" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/mcp/src_base/minecraft/net/minecraft/client/particle/EntityFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="223" column="16" selection-start="7945" selection-end="7945" vertical-scroll-proportion="4.2648773">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/monnef/dawn/entity/EntityBombSmokeFX.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="21" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/monnef/core/client/RenderItemInAir.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="19" selection-start="547" selection-end="547" vertical-scroll-proportion="0.18478261">
           <folding />
         </state>
       </provider>

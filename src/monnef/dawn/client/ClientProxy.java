@@ -7,6 +7,7 @@ package monnef.dawn.client;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import monnef.core.client.RenderItemInAir;
 import monnef.dawn.common.CommonProxy;
 import monnef.dawn.entity.EntityKit;
 import monnef.dawn.entity.EntitySplashBomb;

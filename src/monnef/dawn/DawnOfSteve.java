@@ -37,6 +37,7 @@ import monnef.dawn.server.PlayerHooksServer;
 import net.minecraft.src.ServerPlayerAPI;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.logging.Level;
 
@@ -125,15 +126,15 @@ public class DawnOfSteve {
 
         blunderbuss = new ItemGun(provider.getItemIDFromConfig(BLUNDERBUSS));
         blunderbuss.initBasic(AmmoRequirement.BULLETS_SMALL, clipSize, 10, 10);
-        RegistryUtils.registerItem(blunderbuss, BLUNDERBUSS, "Blunderbuss");
+        RegistryUtils.registerItem(blunderbuss, BLUNDERBUSS, "French Flintlock Blunderbuss");
 
         rifle = new ItemGun(provider.getItemIDFromConfig(RIFLE));
         rifle.initBasic(AmmoRequirement.BULLETS_SMALL, clipSize, 30, 10);
-        RegistryUtils.registerItem(rifle, RIFLE, "Rifle");
+        RegistryUtils.registerItem(rifle, RIFLE, "Ferguson Rifle");
 
         bayonet = new ItemGun(provider.getItemIDFromConfig(BAYONET));
         bayonet.initBasic(AmmoRequirement.BULLETS_SMALL, clipSize, 20, 10).setHitCollDown(30).setMeleeDamage(8);
-        RegistryUtils.registerItem(bayonet, BAYONET, "Rifle with Bayonet");
+        RegistryUtils.registerItem(bayonet, BAYONET, "Charleville Rifle with Bayonet");
 
         renderIndexArmor01 = proxy.addArmor("armorBlue");
 
@@ -173,6 +174,7 @@ public class DawnOfSteve {
         TickRegistry.registerTickHandler(new ClientTicker(), Side.CLIENT);
 
         printInitializedMessage();
+
     }
 
     private void createEntities(IDProvider provider) {
